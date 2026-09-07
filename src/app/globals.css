@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f7f3ec;
+  --black: #111111;
+  --red: #8b1e1e;
+  --red-deep: #6f1717;
+  --ink-soft: #3d3a35;
+  --line: rgba(17, 17, 17, 0.1);
+}
+
+@theme inline {
+  --color-cream: #f7f3ec;
+  --color-ink: #111111;
+  --color-barber: #8b1e1e;
+  --color-barber-deep: #6f1717;
+  --color-muted: #5c574f;
+  --color-line: rgba(17, 17, 17, 0.1);
+  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 1.5rem;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.section-title {
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 0.95;
+}
+
+::selection {
+  background: #8b1e1e;
+  color: #f7f3ec;
+}
+
+.marquee-track {
+  animation: marquee 58s linear infinite;
+  width: max-content;
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
+  animation-duration: 64s;
+}
+
+.marquee-track.paused,
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
