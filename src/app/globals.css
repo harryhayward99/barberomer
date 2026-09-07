@@ -69,10 +69,6 @@ h4,
   animation-duration: 64s;
 }
 
-.marquee-track.paused,
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
 
 @keyframes marquee {
   from {

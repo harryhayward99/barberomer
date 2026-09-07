@@ -46,14 +46,14 @@ export function Header() {
         <Link href="/" className="flex shrink-0 items-center gap-3">
           <Image
             src="/images/logo.png"
-            alt="Barber Omer"
+            alt="Barber Omer Kenilworth"
             width={48}
             height={48}
             className="h-11 w-11 rounded-full object-cover sm:h-12 sm:w-12"
             priority
           />
-          <span className="font-heading text-[17px] tracking-tight">
-            Barber Omer
+          <span className="font-heading max-w-[7.8rem] text-[11px] uppercase leading-[1.2] tracking-[0.12em] sm:max-w-none sm:text-[13px] lg:text-[15px]">
+            Barber Omer Kenilworth
           </span>
         </Link>
 

@@ -1,25 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
+import { MarqueeRow } from "@/components/home/GalleryMarquee";
 import { CallButton } from "@/components/ui/CallButton";
 import { business } from "@/lib/config/business";
-import { heroImage } from "@/lib/config/images";
+import { galleryRowA } from "@/lib/config/images";
 
 export function Hero() {
   return (
     <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-10 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-16">
       <div className="lg:col-span-6">
-        <div className="mb-8 flex items-center gap-3">
-          <Image
-            src="/images/logo.png"
-            alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-full object-cover"
-          />
-          <p className="text-xs uppercase tracking-[0.22em] text-muted">
-            Kenilworth · Since {business.established}
-          </p>
-        </div>
+        <p className="mb-8 text-xs uppercase tracking-[0.22em] text-muted">
+          Kenilworth · Since {business.established}
+        </p>
 
         <h1 className="max-w-xl text-[clamp(2.75rem,10vw,5.6rem)] leading-[0.92]">
           Sharp cuts.
@@ -49,18 +40,8 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="relative lg:col-span-6">
-        <div className="absolute -right-6 -top-6 hidden h-40 w-40 rounded-full border border-line lg:block" />
-        <div className="relative overflow-hidden rounded-[2rem] bg-ink/5">
-          <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
-            width={980}
-            height={1220}
-            priority
-            className="aspect-[4/5] w-full object-cover"
-          />
-        </div>
+      <div className="relative min-w-0 overflow-hidden lg:col-span-6">
+        <MarqueeRow images={galleryRowA} priority />
       </div>
     </section>
   );

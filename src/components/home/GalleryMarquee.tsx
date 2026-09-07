@@ -1,63 +1,31 @@
-"use client";
-
 import Image from "next/image";
-import { useRef, useState } from "react";
 import { galleryRowA, galleryRowB } from "@/lib/config/images";
 import { cn } from "@/lib/utils";
 
-function Row({
+type GalleryImage = (typeof galleryRowA)[number];
+
+export function MarqueeRow({
   images,
   reverse = false,
+  priority = false,
 }: {
-  images: readonly { src: string; alt: string; width: number }[];
+  images: readonly GalleryImage[];
   reverse?: boolean;
+  priority?: boolean;
 }) {
-  const rowRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-  const drag = useRef({
-    active: false,
-    startX: 0,
-    startScroll: 0,
-  });
-
   const looped = [...images, ...images];
 
   return (
-    <div
-      ref={rowRef}
-      className="marquee overflow-hidden"
-      onPointerDown={(event) => {
-        drag.current = {
-          active: true,
-          startX: event.clientX,
-          startScroll: rowRef.current?.scrollLeft ?? 0,
-        };
-        setPaused(true);
-        rowRef.current?.setPointerCapture(event.pointerId);
-      }}
-      onPointerMove={(event) => {
-        if (!drag.current.active || !rowRef.current) return;
-        rowRef.current.scrollLeft =
-          drag.current.startScroll - (event.clientX - drag.current.startX);
-      }}
-      onPointerUp={() => {
-        drag.current.active = false;
-        setPaused(false);
-      }}
-    >
-      <div
-        className={cn(
-          "marquee-track flex gap-4 pr-4",
-          reverse && "reverse",
-          paused && "paused",
-        )}
-      >
+    <div className="marquee overflow-hidden">
+      <div className={cn("marquee-track flex gap-4 pr-4", reverse && "reverse")}>
         {looped.map((image, index) => (
           <div
             key={`${image.src}-${index}`}
             className={cn(
               "relative shrink-0 overflow-hidden rounded-2xl bg-ink/5",
-              image.width === 4 ? "w-[280px] sm:w-[340px]" : "w-[220px] sm:w-[260px]",
+              image.width === 4
+                ? "w-[280px] sm:w-[340px]"
+                : "w-[220px] sm:w-[260px]",
             )}
           >
             <Image
@@ -65,6 +33,7 @@ function Row({
               alt={image.alt}
               width={680}
               height={850}
+              priority={priority && index < 2}
               className="aspect-[4/5] h-full w-full object-cover"
               draggable={false}
             />
@@ -89,8 +58,8 @@ export function GalleryMarquee() {
       </div>
 
       <div className="mt-12 space-y-4">
-        <Row images={galleryRowA} />
-        <Row images={galleryRowB} reverse />
+        <MarqueeRow images={galleryRowB} />
+        <MarqueeRow images={galleryRowA} reverse />
       </div>
     </section>
   );
