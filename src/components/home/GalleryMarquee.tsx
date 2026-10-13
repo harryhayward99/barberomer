@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { galleryRowA, galleryRowB } from "@/lib/config/images";
+import { galleryImages, galleryRowA, galleryRowB } from "@/lib/config/images";
 import { cn } from "@/lib/utils";
 
-type GalleryImage = (typeof galleryRowA)[number];
+type GalleryImage = (typeof galleryImages)[number];
 
 export function MarqueeRow({
   images,
