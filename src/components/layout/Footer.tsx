@@ -3,9 +3,9 @@ import Link from "next/link";
 import { business } from "@/lib/config/business";
 import { displayHours } from "@/lib/config/hours";
 
-const footerNav = [
+const footerNav: { href: string; label: string; external?: boolean }[] = [
   { href: "/services", label: "Services" },
-  { href: "/book", label: "Book" },
+  { href: business.bookingUrl, label: "Book", external: true },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
@@ -36,16 +36,36 @@ export function Footer() {
           >
             {business.phoneDisplay}
           </a>
+          <a
+            href={business.bookingUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 flex w-fit min-h-12 items-center justify-center rounded-full bg-barber px-5 text-[15px] font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+          >
+            Book Online Now
+          </a>
         </div>
 
         <div className="lg:col-span-3">
           <p className="text-xs uppercase tracking-[0.18em] text-cream/50">Visit</p>
           <nav className="mt-5 flex flex-col gap-3 text-cream/80">
-            {footerNav.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-cream">
-                {item.label}
-              </Link>
-            ))}
+            {footerNav.map((item) =>
+              item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-cream"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link key={item.href} href={item.href} className="hover:text-cream">
+                  {item.label}
+                </Link>
+              ),
+            )}
             <a
               href={business.instagram}
               target="_blank"

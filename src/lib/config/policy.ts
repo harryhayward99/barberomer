@@ -1,26 +1,21 @@
-/**
- * Booking and cancellation policy.
- * Add Omer’s deposit, reschedule and cancellation terms here.
- * Do not invent a refund policy — this page is ready to be filled in.
- */
+import { business } from "@/lib/config/business";
+
 export const bookingPolicy = {
   heading: "Booking & cancellation policy",
   intro:
-    "Online bookings ask for a 25% deposit so the chair is held for you. The remaining balance is paid at the appointment.",
+    "Omer values everyone who sits in his chair. This shop is also his living, so the time you book is time that matters.",
   sections: [
     {
-      title: "Deposits",
-      body: "Every online booking requires a 25% deposit, calculated from the selected service. The remaining balance is due when you sit down. A booking is only confirmed once the deposit payment succeeds.",
+      title: "Your appointment",
+      body: "When you book, that time is held for you. Please arrive when you said you would. A missed appointment is an hour that cannot be given to someone else.",
     },
     {
-      title: "Rescheduling",
-      body: "You can reschedule from the link in your confirmation email or on your booking page, subject to availability. Moving an appointment updates Omer’s calendar automatically.",
+      title: "Changing or cancelling",
+      body: `If you cannot make it, call Omer on ${business.phoneDisplay} as soon as you know. The earlier he hears, the easier it is to offer that time to another customer.`,
     },
     {
-      title: "Cancellations and refunds",
-      body: "Cancellation terms — including whether the 25% deposit is refundable — will be added here. Until then, please call Omer on 07305 421210 if you need to cancel or discuss a booking.",
+      title: "Late cancellations and missed appointments",
+      body: "A fee is not taken when you book. If an appointment is cancelled late or missed, a fee may be sent afterwards, once the circumstances have been considered.",
     },
   ],
-  editableNote:
-    "Omer: replace the cancellations paragraph above with your final policy when you are ready. This is the only copy that should describe refunds.",
 };

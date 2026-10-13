@@ -70,6 +70,59 @@ h4,
 }
 
 
+.book-widget-glow {
+  position: absolute;
+  inset: -52px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 30, 30, 0.62) 0,
+    rgba(139, 30, 30, 0.4) 34px,
+    rgba(139, 30, 30, 0.14) 62px,
+    rgba(139, 30, 30, 0) 80px
+  );
+  animation: book-glow 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes book-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes status-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.status-light-glow {
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(61, 220, 120, 0.95) 0,
+    rgba(61, 220, 120, 0.4) 38%,
+    rgba(61, 220, 120, 0) 72%
+  );
+  animation: status-glow 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
 @keyframes marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -80,8 +133,9 @@ h4,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
+  .marquee-track,
+  .book-widget-glow,
+  .status-light-glow {
   }
 
   html {

@@ -42,8 +42,8 @@ export const heroImage = {
 };
 
 export const aboutImage = {
-  src: "/images/omer-shopfront.png",
-  alt: "Omer outside Barber Omer on Common Lane, Kenilworth",
+  src: "/images/omer-profile.jpg",
+  alt: "Omer, Barber Omer Kenilworth",
 };
 
 export const galleryRowA = [

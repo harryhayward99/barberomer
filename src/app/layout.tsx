@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
+import { BookWidget } from "@/components/ui/BookWidget";
 import { business } from "@/lib/config/business";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -65,9 +65,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
-        <main className="pb-24 md:pb-0">{children}</main>
+        <main>{children}</main>
         <Footer />
-        <MobileCtaBar />
+        <BookWidget />
       </body>
     </html>
   );

@@ -1,6 +1,15 @@
 import { business } from "@/lib/config/business";
 import { reviews } from "@/lib/config/reviews";
 
+function initials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
+}
+
 export function Reviews() {
   const looped = [...reviews, ...reviews];
 
@@ -14,23 +23,45 @@ export function Reviews() {
               Kenilworth keeps coming back.
             </h2>
           </div>
-          <div className="lg:text-right">
-            <p className="font-heading text-[clamp(2.75rem,8vw,3.75rem)] tracking-tight">
-              {business.rating} <span className="text-barber">★</span>
-            </p>
-            <p className="mt-2 text-sm text-muted">Google rating</p>
+          <div className="flex items-center gap-5">
+            <div>
+              <p className="font-heading text-[clamp(2.75rem,8vw,3.75rem)] tracking-tight">
+                {business.rating} <span className="text-barber">★</span>
+              </p>
+              <p className="mt-1 text-sm text-muted">Google rating</p>
+            </div>
+            <a
+              href={business.googleReviewsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-barber px-4 text-sm font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+            >
+              Leave a Review
+            </a>
           </div>
         </div>
       </div>
 
       <div className="marquee mt-12 overflow-hidden">
-        <div className="marquee-track flex gap-5 pr-5">
+        <div className="marquee-track flex gap-4 pr-4">
           {looped.map((review, index) => (
             <figure
               key={`${review.name}-${index}`}
-              className="w-[320px] shrink-0 rounded-[1.6rem] border border-line bg-cream p-6 sm:w-[380px]"
+              className="w-[300px] shrink-0 rounded-2xl bg-cream p-5 sm:w-[360px]"
+              style={{ border: "1px solid #c4c4c4" }}
             >
-              <blockquote className="text-[17px] leading-7 text-ink">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-medium text-cream">
+                  {initials(review.name)}
+                </span>
+                <span
+                  className="text-sm tracking-[0.14em] text-barber"
+                  aria-label={`${review.stars} stars`}
+                >
+                  {"★".repeat(review.stars)}
+                </span>
+              </div>
+              <blockquote className="mt-4 text-[16px] leading-7 text-ink">
                 “{review.text}”
               </blockquote>
               <figcaption className="mt-5 text-sm text-muted">{review.name}</figcaption>

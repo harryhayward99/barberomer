@@ -8,24 +8,34 @@ export function MarqueeRow({
   images,
   reverse = false,
   priority = false,
+  fit = false,
 }: {
   images: readonly GalleryImage[];
   reverse?: boolean;
   priority?: boolean;
+  fit?: boolean;
 }) {
   const looped = [...images, ...images];
 
   return (
-    <div className="marquee overflow-hidden">
-      <div className={cn("marquee-track flex gap-4 pr-4", reverse && "reverse")}>
+    <div className={cn("marquee overflow-hidden", fit && "h-full min-h-[100px] w-full")}>
+      <div
+        className={cn(
+          "marquee-track flex gap-3 pr-3 sm:gap-4 sm:pr-4",
+          fit && "h-full min-h-[100px]",
+          reverse && "reverse",
+        )}
+      >
         {looped.map((image, index) => (
           <div
             key={`${image.src}-${index}`}
             className={cn(
               "relative shrink-0 overflow-hidden rounded-2xl bg-ink/5",
-              image.width === 4
-                ? "w-[280px] sm:w-[340px]"
-                : "w-[220px] sm:w-[260px]",
+              fit
+                ? "aspect-[4/5] h-full min-h-[100px] w-auto"
+                : image.width === 4
+                  ? "w-[280px] sm:w-[340px]"
+                  : "w-[220px] sm:w-[260px]",
             )}
           >
             <Image
@@ -34,7 +44,10 @@ export function MarqueeRow({
               width={680}
               height={850}
               priority={priority && index < 2}
-              className="aspect-[4/5] h-full w-full object-cover"
+              className={cn(
+                "object-cover",
+                fit ? "absolute inset-0 h-full w-full" : "aspect-[4/5] h-full w-full",
+              )}
               draggable={false}
             />
           </div>

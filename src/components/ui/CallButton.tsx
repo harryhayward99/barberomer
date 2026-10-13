@@ -5,12 +5,14 @@ type CallButtonProps = {
   className?: string;
   compact?: boolean;
   label?: string;
+  numberOnly?: boolean;
 };
 
 export function CallButton({
   className,
   compact = false,
   label = "Call Omer",
+  numberOnly = false,
 }: CallButtonProps) {
   return (
     <a
@@ -23,11 +25,17 @@ export function CallButton({
         className,
       )}
     >
-      <span>{label}</span>
-      {!compact && (
-        <span className="hidden font-normal tabular-nums md:inline">
-          — {business.phoneDisplay}
-        </span>
+      {numberOnly ? (
+        <span className="tabular-nums">{business.phoneDisplay}</span>
+      ) : (
+        <>
+          <span>{label}</span>
+          {!compact && (
+            <span className="font-normal tabular-nums">
+              — {business.phoneDisplay}
+            </span>
+          )}
+        </>
       )}
     </a>
   );

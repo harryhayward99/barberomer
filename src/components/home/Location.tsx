@@ -1,4 +1,3 @@
-import { CallButton } from "@/components/ui/CallButton";
 import { business } from "@/lib/config/business";
 
 export function Location() {
@@ -27,7 +26,14 @@ export function Location() {
             {business.phoneDisplay}
           </a>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <CallButton />
+            <a
+              href={business.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-barber px-5 text-[15px] font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+            >
+              Book Online Now
+            </a>
             <a
               href={business.directionsUrl}
               target="_blank"

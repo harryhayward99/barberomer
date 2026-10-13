@@ -10,6 +10,7 @@ export const business = {
     postcode: "CV8 2EQ",
     country: "United Kingdom",
   },
+  bookingUrl: "https://api.leadconnectorhq.com/booking/barber-omer-kenilworth",
   instagram: "https://www.instagram.com/turkishhairmaster/",
   instagramHandle: "@turkishhairmaster",
   googleMapsQuery: "Barber Omer, 40 Common Lane, Kenilworth CV8 2EQ",

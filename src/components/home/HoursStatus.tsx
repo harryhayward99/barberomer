@@ -4,6 +4,40 @@ import { useEffect, useState } from "react";
 import { getOpenStatus } from "@/lib/booking/time";
 import { displayHours } from "@/lib/config/hours";
 
+function statusLine(status: { isOpen: boolean; label: string }) {
+  if (status.isOpen) {
+    const until = status.label.replace(/^Open today until\s+/i, "");
+    return `Open · until ${until}`;
+  }
+
+  if (status.label.startsWith("Opens ")) {
+    return `Closed · ${status.label}`;
+  }
+
+  return status.label;
+}
+
+function StatusLight({ open }: { open: boolean }) {
+  return (
+    <span className="relative grid h-8 w-8 shrink-0 place-items-center" aria-hidden>
+      {open ? (
+        <>
+          <span className="status-light-glow" />
+          <span className="relative h-2.5 w-2.5" style={{ background: "#3DDC78" }} />
+        </>
+      ) : (
+        <span
+          className="h-2.5 w-2.5"
+          style={{
+            background: "#2a2a2a",
+            boxShadow: "inset 0 0 0 1px rgba(247,243,236,0.35)",
+          }}
+        />
+      )}
+    </span>
+  );
+}
+
 export function HoursStatus() {
   const [status, setStatus] = useState(() => getOpenStatus());
   const [today, setToday] = useState(() =>
@@ -28,15 +62,14 @@ export function HoursStatus() {
     return () => window.clearInterval(id);
   }, []);
 
+  const line = statusLine(status);
+
   return (
-    <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
+    <section id="hours" className="mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8 lg:py-28">
       <div className="grid items-start gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="text-xs uppercase tracking-[0.22em] text-barber">Hours</p>
           <h2 className="section-title mt-3">Open 7 days.</h2>
-          <p className="mt-6 inline-flex rounded-full bg-ink px-4 py-2 text-sm text-cream">
-            {status.label}
-          </p>
         </div>
         <ul className="lg:col-span-7">
           {displayHours.map((row) => {
@@ -44,11 +77,21 @@ export function HoursStatus() {
             return (
               <li
                 key={row.day}
-                className={`flex items-center justify-between border-b border-line py-4 text-lg ${
+                className={`flex items-center justify-between gap-4 border-b border-line py-4 text-lg ${
                   isToday ? "text-ink" : "text-muted"
                 }`}
               >
-                <span className={isToday ? "text-barber" : undefined}>{row.day}</span>
+                <span className="flex items-center gap-3">
+                  {isToday ? <StatusLight open={status.isOpen} /> : null}
+                  <span>
+                    <span className={`block ${isToday ? "text-barber" : ""}`}>{row.day}</span>
+                    {isToday ? (
+                      <span className="mt-0.5 block text-xs uppercase tracking-[0.16em] text-ink">
+                        {line}
+                      </span>
+                    ) : null}
+                  </span>
+                </span>
                 <span className="tabular-nums">{row.hours}</span>
               </li>
             );
