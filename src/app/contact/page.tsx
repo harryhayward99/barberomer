@@ -4,7 +4,7 @@ import { Location } from "@/components/home/Location";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Find Barber Omer at 40 Common Lane, Kenilworth. Call 07305 421210.",
+  description: "Find Barber Omer at 40 Common Lane, Kenilworth. Call 07846 724712.",
 };
 
 export default function ContactPage() {

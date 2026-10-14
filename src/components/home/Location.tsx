@@ -13,6 +13,9 @@ export function Location() {
             {business.name}
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted">
+            Book online or give us a call to arrange a booking. We accept bookings 24/7.
+          </p>
+          <p className="mt-6 text-lg leading-8 text-muted">
             {business.address.line1}
             <br />
             {business.address.city}
