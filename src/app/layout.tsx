@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Barber Omer",
   },
   description:
-    "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07846 724712 or book online.",
+    "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07480 335904 or book online.",
   openGraph: {
     title: "Barber Omer | Sharp cuts. No fuss.",
     description:
