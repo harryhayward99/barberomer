@@ -7,11 +7,11 @@ export const bookingPolicy = {
   sections: [
     {
       title: "Your appointment",
-      body: "When you book, that time is held for you. Please arrive when you said you would. A missed appointment is an hour that cannot be given to someone else.",
+      body: "When you book, that time is held for you. Please arrive when you said you would. A missed appointment is time that cannot be given to someone else.",
     },
     {
       title: "Changing or cancelling",
-      body: `If you cannot make it, call Omer on ${business.phoneDisplay} as soon as you know. The earlier he hears, the easier it is to offer that time to another customer.`,
+      body: `Use the reschedule or cancellation link in your confirmation text. Opening the link alone does not change your booking: complete the steps on the page to confirm. Links close 2 hours before your appointment. If you cannot find your link or need a later change, call ${business.phoneDisplay}. Your appointment stays unchanged until a change is confirmed.`,
     },
     {
       title: "Late cancellations and missed appointments",

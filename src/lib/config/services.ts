@@ -41,6 +41,7 @@ export const services: Service[] = [
   {
     id: "kids-hair-cut",
     name: "Kids Hair Cut — Under 12s",
+    description: "For a skin fade, choose Skin Fade at the standard £22 price.",
     pricePence: 1500,
     durationMinutes: 30,
     group: "hair",
@@ -69,7 +70,7 @@ export const services: Service[] = [
   {
     id: "one-guard-clipper-shave",
     name: "One Guard Clipper Shave",
-    pricePence: 1200,
+    pricePence: 1000,
     durationMinutes: 15,
     group: "beard",
   },

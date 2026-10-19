@@ -9,13 +9,13 @@ export type DayHours = {
 } | null;
 
 export const openingHours: Record<number, DayHours> = {
-  1: { open: "09:00", close: "19:30" },
-  2: { open: "09:00", close: "19:30" },
-  3: { open: "09:00", close: "19:30" },
+  1: { open: "09:00", close: "19:00" },
+  2: { open: "09:00", close: "19:00" },
+  3: { open: "09:00", close: "19:00" },
   4: { open: "09:00", close: "20:00" },
   5: { open: "09:00", close: "20:00" },
-  6: { open: "08:30", close: "18:30" },
-  0: { open: "10:00", close: "17:30" },
+  6: { open: "09:00", close: "19:00" },
+  0: { open: "10:00", close: "18:00" },
 };
 
 export const dayNames = [
@@ -29,13 +29,13 @@ export const dayNames = [
 ] as const;
 
 export const displayHours = [
-  { day: "Monday", hours: "09:00 – 19:30" },
-  { day: "Tuesday", hours: "09:00 – 19:30" },
-  { day: "Wednesday", hours: "09:00 – 19:30" },
+  { day: "Monday", hours: "09:00 – 19:00" },
+  { day: "Tuesday", hours: "09:00 – 19:00" },
+  { day: "Wednesday", hours: "09:00 – 19:00" },
   { day: "Thursday", hours: "09:00 – 20:00" },
   { day: "Friday", hours: "09:00 – 20:00" },
-  { day: "Saturday", hours: "08:30 – 18:30" },
-  { day: "Sunday", hours: "10:00 – 17:30" },
+  { day: "Saturday", hours: "09:00 – 19:00" },
+  { day: "Sunday", hours: "10:00 – 18:00" },
 ] as const;
 
 export const slotIntervalMinutes = 15;

@@ -44,10 +44,10 @@ const jsonLd = {
     addressCountry: "GB",
   },
   openingHours: [
-    "Mo-We 09:00-19:30",
+    "Mo-We 09:00-19:00",
     "Th-Fr 09:00-20:00",
-    "Sa 08:30-18:30",
-    "Su 10:00-17:30",
+    "Sa 09:00-19:00",
+    "Su 10:00-18:00",
   ],
   image: "/images/logo.png",
 };
