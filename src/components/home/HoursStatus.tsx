@@ -38,7 +38,7 @@ function StatusLight({ open }: { open: boolean }) {
   );
 }
 
-export function HoursStatus() {
+export function HoursStatus({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState(() => getOpenStatus());
   const [today, setToday] = useState(() =>
     new Intl.DateTimeFormat("en-GB", {
@@ -65,13 +65,24 @@ export function HoursStatus() {
   const line = statusLine(status);
 
   return (
-    <section id="hours" className="mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8 lg:py-28">
-      <div className="grid items-start gap-12 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+    <section
+      id="hours"
+      className={`mx-auto max-w-7xl scroll-mt-28 px-5 sm:px-8 ${
+        compact ? "pb-20 pt-8 lg:pb-28 lg:pt-10" : "py-20 lg:py-28"
+      }`}
+    >
+      <div
+        className={
+          compact
+            ? "mx-auto max-w-xl"
+            : "grid items-start gap-12 lg:grid-cols-12"
+        }
+      >
+        <div className={compact ? "text-center" : "lg:col-span-5"}>
           <p className="text-xs uppercase tracking-[0.22em] text-barber">Hours</p>
           <h2 className="section-title mt-3">Open 7 days.</h2>
         </div>
-        <ul className="lg:col-span-7">
+        <ul className={compact ? "mt-8" : "lg:col-span-7"}>
           {displayHours.map((row) => {
             const isToday = row.day === today;
             return (

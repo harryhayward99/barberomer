@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { ContactBoard } from "@/components/contact/ContactBoard";
 import { HoursStatus } from "@/components/home/HoursStatus";
-import { Location } from "@/components/home/Location";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Location pageStart />
+      <ContactBoard />
       <HoursStatus />
     </>
   );

@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <About pageStart />
-      <HoursStatus />
+      <HoursStatus compact />
     </>
   );
 }
