@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function ReviewsPage() {
-  return <Reviews />;
+  return <Reviews pageStart />;
 }

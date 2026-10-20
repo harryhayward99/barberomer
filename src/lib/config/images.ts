@@ -34,6 +34,31 @@ export const galleryImages = [
     alt: "Short textured cut with a clean skin fade and sharp hairline",
     width: 3,
   },
+  {
+    src: "/images/cuts/cut-black-mask-fade.png",
+    alt: "Skin fade with a black peel mask and nose wax in the chair",
+    width: 4,
+  },
+  {
+    src: "/images/cuts/cut-ginger-beard-lineup.jpg",
+    alt: "Sharp ginger beard lineup on a clean shaved head",
+    width: 3,
+  },
+  {
+    src: "/images/cuts/cut-side-part-fade.jpg",
+    alt: "Side-part skin fade with a sharp beard connection",
+    width: 3,
+  },
+  {
+    src: "/images/cuts/cut-hot-towel-shave.jpg",
+    alt: "Hot towel wet shave with cream across the jaw and neck",
+    width: 4,
+  },
+  {
+    src: "/images/cuts/cut-beard-shape-fade.jpg",
+    alt: "Skin fade and precise beard shape finished in the chair",
+    width: 3,
+  },
 ] as const;
 
 export const heroImage = {
@@ -46,18 +71,5 @@ export const aboutImage = {
   alt: "Omer, Barber Omer Kenilworth",
 };
 
-export const galleryRowA = [
-  galleryImages[0],
-  galleryImages[2],
-  galleryImages[4],
-  galleryImages[6],
-  galleryImages[1],
-];
-
-export const galleryRowB = [
-  galleryImages[1],
-  galleryImages[3],
-  galleryImages[5],
-  galleryImages[0],
-  galleryImages[6],
-];
+/** Single looping row used on the homepage hero and gallery page. */
+export const galleryRowA = [...galleryImages];

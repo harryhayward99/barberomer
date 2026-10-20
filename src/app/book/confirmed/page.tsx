@@ -32,7 +32,7 @@ export default async function ConfirmedPage({
 
   if (!booking || booking.status !== "confirmed") {
     return (
-      <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
+      <section className="mx-auto max-w-3xl px-5 pb-20 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
         <h1 className="text-4xl sm:text-6xl">Payment still pending.</h1>
         <p className="mt-5 text-lg text-muted">
           If you have just paid, give it a moment and refresh. If anything looks
@@ -46,7 +46,7 @@ export default async function ConfirmedPage({
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
+    <section className="mx-auto max-w-3xl px-5 pb-20 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
       <p className="text-xs uppercase tracking-[0.22em] text-barber">Confirmed</p>
       <h1 className="mt-3 text-5xl leading-none sm:text-7xl">You&apos;re booked.</h1>
       <p className="mt-8 text-2xl">{booking.serviceName}</p>

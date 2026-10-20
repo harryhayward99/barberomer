@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Location />
+      <Location pageStart />
       <HoursStatus />
     </>
   );

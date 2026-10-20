@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <GalleryMarquee />
+      <GalleryMarquee pageStart />
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-5 pb-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-3">
         {galleryImages.map((image) => (
           <div key={image.src} className="overflow-hidden rounded-[1.6rem]">

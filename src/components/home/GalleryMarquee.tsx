@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { galleryImages, galleryRowA, galleryRowB } from "@/lib/config/images";
-import { cn } from "@/lib/utils";
+import { galleryImages, galleryRowA } from "@/lib/config/images";
+import { cn, pageStartPad, sectionPad, sectionPadBottom } from "@/lib/utils";
 
 type GalleryImage = (typeof galleryImages)[number];
 
@@ -57,9 +57,15 @@ export function MarqueeRow({
   );
 }
 
-export function GalleryMarquee() {
+export function GalleryMarquee({ pageStart = false }: { pageStart?: boolean }) {
   return (
-    <section id="gallery" className="overflow-hidden py-20 lg:py-28">
+    <section
+      id="gallery"
+      className={cn(
+        "overflow-hidden",
+        pageStart ? `${pageStartPad} ${sectionPadBottom}` : sectionPad,
+      )}
+    >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <p className="text-xs uppercase tracking-[0.22em] text-barber">Gallery</p>
         <h2 className="section-title mt-3 max-w-xl">
@@ -70,9 +76,8 @@ export function GalleryMarquee() {
         </p>
       </div>
 
-      <div className="mt-12 space-y-4">
-        <MarqueeRow images={galleryRowB} />
-        <MarqueeRow images={galleryRowA} reverse />
+      <div className="mt-12">
+        <MarqueeRow images={galleryRowA} />
       </div>
     </section>
   );

@@ -1,9 +1,16 @@
 import Image from "next/image";
 import { aboutImage } from "@/lib/config/images";
+import { cn, pageStartPad, sectionPad, sectionPadBottom } from "@/lib/utils";
 
-export function About() {
+export function About({ pageStart = false }: { pageStart?: boolean }) {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
+    <section
+      id="about"
+      className={cn(
+        "mx-auto max-w-7xl px-5 sm:px-8",
+        pageStart ? `${pageStartPad} ${sectionPadBottom}` : sectionPad,
+      )}
+    >
       <p className="text-xs uppercase tracking-[0.22em] text-barber">About</p>
       <div className="mt-4 flex items-center gap-4 sm:gap-5">
         <Image
@@ -25,6 +32,7 @@ export function About() {
         <p>
           No rush, no upselling, no luxury mark-up. Just reliable modern
           grooming in Kenilworth — friendly, personal and done properly.
+          Drinks are available while you wait.
         </p>
       </div>
     </section>

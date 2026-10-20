@@ -1,10 +1,14 @@
 import { business } from "@/lib/config/business";
+import { cn, pageStartPad, sectionPad, sectionPadBottom } from "@/lib/utils";
 
-export function Location() {
+export function Location({ pageStart = false }: { pageStart?: boolean }) {
   return (
     <section
       id="contact"
-      className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28"
+      className={cn(
+        "mx-auto max-w-7xl px-5 sm:px-8",
+        pageStart ? `${pageStartPad} ${sectionPadBottom}` : sectionPad,
+      )}
     >
       <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-5">
@@ -13,7 +17,7 @@ export function Location() {
             {business.name}
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted">
-            Book online or give us a call to arrange a booking. We accept bookings 24/7.
+            Book online or give us a call — bookings are accepted 24 hours a day, 7 days a week.
           </p>
           <p className="mt-6 text-lg leading-8 text-muted">
             {business.address.line1}
