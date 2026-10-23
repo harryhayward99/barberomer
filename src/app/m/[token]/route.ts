@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const headers = {
   "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store, max-age=0",
-  "Referrer-Policy": "no-referrer", "X-Robots-Tag": "noindex, nofollow, noarchive",
+  "Referrer-Policy": "same-origin", "X-Robots-Tag": "noindex, nofollow, noarchive",
   "X-Content-Type-Options": "nosniff",
   "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; form-action 'self' https://api.leadconnectorhq.com; frame-ancestors 'none'; base-uri 'none'",
 };
