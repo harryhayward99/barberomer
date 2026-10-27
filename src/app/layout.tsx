@@ -1,8 +1,9 @@
+import { openGraph } from "@/lib/config/seo";
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BookWidget } from "@/components/ui/BookWidget";
-import { business } from "@/lib/config/business";
+import { business, siteUrl } from "@/lib/config/business";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/sora/600.css";
@@ -15,20 +16,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Barber Omer | Modern barbering in Kenilworth",
     template: "%s | Barber Omer",
   },
   description:
     "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07480 335904 or book online.",
-  openGraph: {
-    title: "Barber Omer | Sharp cuts. No fuss.",
-    description:
-      "Modern barbering at 40 Common Lane, Kenilworth. Great cuts, fair prices and a friendly atmosphere since 2015.",
-    locale: "en_GB",
-    type: "website",
-  },
+  openGraph,
 };
 
 const jsonLd = {
@@ -36,6 +31,7 @@ const jsonLd = {
   "@type": "HairSalon",
   name: business.name,
   telephone: business.phoneTel,
+  url: siteUrl,
   address: {
     "@type": "PostalAddress",
     streetAddress: business.address.line1,
@@ -49,7 +45,7 @@ const jsonLd = {
     "Sa 09:00-19:00",
     "Su 10:00-18:00",
   ],
-  image: "/images/logo.png",
+  image: `${siteUrl}/images/logo.png`,
 };
 
 export default function RootLayout({

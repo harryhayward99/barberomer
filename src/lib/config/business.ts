@@ -32,7 +32,7 @@ export const business = {
 } as const;
 
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://barberomer.co.uk";
 
 export function formatAddress(separator = "\n") {
   const { line1, city, postcode } = business.address;

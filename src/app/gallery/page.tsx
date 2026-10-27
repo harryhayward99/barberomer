@@ -1,9 +1,12 @@
+import { openGraph } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { GalleryMarquee } from "@/components/home/GalleryMarquee";
 import { galleryImages } from "@/lib/config/images";
 
 export const metadata: Metadata = {
+  openGraph: { ...openGraph, url: "/gallery" },
+  alternates: { canonical: "/gallery" },
   title: "Gallery",
   description: "Recent cuts from the chair at Barber Omer, Kenilworth.",
 };

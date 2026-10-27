@@ -36,3 +36,14 @@ test('tokens cannot be used for path traversal or raw record lookup',()=>{
  const t=s.tokenFor(record('dad'),secret);
  assert.match(s.tokenPath(t),/^booking-management\/[a-f0-9]{64}\.json$/);
 });
+
+test('management forms require the same trusted new or legacy origin',()=>{
+ for (const origin of ['https://barberomer.co.uk','https://barberomer.vercel.app']) {
+  assert.equal(s.validManagementOrigin(origin, origin+'/m/token/0/cancel'),true);
+ }
+ for (const origin of [null,'null','https://evil.example','https://barberomer.co.uk.evil.example','http://barberomer.co.uk']) {
+  assert.equal(s.validManagementOrigin(origin,'https://barberomer.co.uk/m/token/0/cancel'),false);
+ }
+ assert.equal(s.validManagementOrigin('https://barberomer.vercel.app','https://barberomer.co.uk/m/token/0/cancel'),false);
+ assert.equal(s.SITE,'https://barberomer.co.uk');
+});

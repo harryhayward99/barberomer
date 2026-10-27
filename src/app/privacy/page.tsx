@@ -1,7 +1,10 @@
+import { openGraph } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { business } from "@/lib/config/business";
 
 export const metadata: Metadata = {
+  openGraph: { ...openGraph, url: "/privacy" },
+  alternates: { canonical: "/privacy" },
   title: "Privacy Policy",
 };
 

@@ -1,7 +1,10 @@
+import { openGraph } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { bookingPolicy } from "@/lib/config/policy";
 
 export const metadata: Metadata = {
+  openGraph: { ...openGraph, url: "/booking-policy" },
+  alternates: { canonical: "/booking-policy" },
   title: "Booking & cancellation policy",
 };
 

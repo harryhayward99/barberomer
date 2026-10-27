@@ -1,3 +1,9 @@
+import { openGraph } from "@/lib/config/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  openGraph: { ...openGraph, url: "/" }, alternates: { canonical: "/" } };
+
 import { Hero } from "@/components/home/Hero";
 import { Location } from "@/components/home/Location";
 import { Reviews } from "@/components/home/Reviews";

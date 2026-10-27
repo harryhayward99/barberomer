@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ManageBooking } from "@/components/booking/ManageBooking";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "Manage booking",
 };
 

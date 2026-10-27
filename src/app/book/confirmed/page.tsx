@@ -8,6 +8,7 @@ import { business } from "@/lib/config/business";
 import { formatPrice } from "@/lib/config/services";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "You're booked",
 };
 

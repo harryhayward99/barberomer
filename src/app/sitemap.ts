@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/reviews",
     "/contact",
-    "/book",
     "/privacy",
     "/booking-policy",
   ];
@@ -17,6 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" || route === "/book" ? 1 : 0.6,
+    priority: route === "" ? 1 : 0.6,
   }));
 }

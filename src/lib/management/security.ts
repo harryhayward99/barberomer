@@ -1,7 +1,13 @@
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 
 export const LOCATION_ID = "cL1qFO89EgW5Y5ppgoL6";
-export const SITE = "https://barberomer.vercel.app";
+export const SITE = "https://barberomer.co.uk";
+const MANAGEMENT_ORIGINS = new Set([SITE, "https://barberomer.vercel.app"]);
+
+export function validManagementOrigin(origin: string | null, requestUrl: string): boolean {
+  // Existing texts remain usable, but forms must be submitted on the same trusted host.
+  return origin !== null && MANAGEMENT_ORIGINS.has(origin) && new URL(requestUrl).origin === origin;
+}
 export type ChangeLinks = { reschedule: string; cancel: string };
 export type LinkRecord = { version: 1; expiresAt: number; appointments: ChangeLinks[] };
 

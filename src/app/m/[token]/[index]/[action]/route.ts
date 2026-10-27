@@ -1,9 +1,9 @@
-import { destinationFor, SITE } from "@/lib/management/security";
+import { destinationFor, validManagementOrigin } from "@/lib/management/security";
 import { readLinks } from "@/lib/management/store";
 
 export const runtime = "nodejs";
 export async function POST(request: Request, context: { params: Promise<{ token: string; index: string; action: string }> }) {
-  if (request.headers.get("origin") !== SITE) return new Response("Invalid request", { status: 403 });
+  if (!validManagementOrigin(request.headers.get("origin"), request.url)) return new Response("Invalid request", { status: 403 });
   const { token, index, action } = await context.params;
   try {
     const record = await readLinks(token);
