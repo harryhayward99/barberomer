@@ -46,7 +46,7 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
         </div>
       </div>
 
-      <div className="marquee mt-12 overflow-hidden py-5">
+      <div className="marquee overflow-hidden pt-8 pb-20">
         <div className="marquee-track flex gap-4 px-1 pr-4">
           {looped.map((review, index) => (
             <figure
@@ -74,7 +74,7 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl px-5 sm:px-8">
+      <div className="relative z-10 mx-auto -mt-8 max-w-7xl px-5 sm:px-8">
         <a
           href={business.googleReviewsUrl}
           target="_blank"

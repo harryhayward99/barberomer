@@ -35,35 +35,34 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-colors duration-300",
+        "sticky top-0 z-40 bg-transparent transition-[colors,box-shadow] duration-300 sm:border-b sm:shadow-[0_0_0_1px_rgba(17,17,17,0.05),0_4px_14px_rgba(17,17,17,0.08),0_18px_40px_rgba(17,17,17,0.1)]",
         scrolled
-          ? "border-line bg-cream/95 backdrop-blur-md"
-          : "border-transparent bg-cream",
+          ? "sm:border-line sm:bg-cream/95 sm:backdrop-blur-md"
+          : "sm:border-transparent sm:bg-cream",
       )}
     >
-      <div
-        className="relative overflow-hidden bg-cream text-cream"
-        style={{ borderBottom: "1px solid #c4c4c4" }}
-      >
+      <div className="relative flex justify-center bg-transparent px-4 text-cream sm:block sm:overflow-hidden sm:bg-cream sm:px-0 sm:border-b sm:border-[#c4c4c4]">
         <p
-          className="ml-auto flex min-h-7 w-max items-center gap-2 whitespace-nowrap bg-barber py-1 pl-7 pr-4 text-[11px] text-cream sm:min-h-8 sm:pl-8 sm:pr-8 sm:text-[13px]"
-          style={{ clipPath: "polygon(1.1rem 0, 100% 0, 100% 100%, 0 100%)" }}
+          className="mx-auto flex min-h-7 w-max max-w-full items-center gap-2 whitespace-nowrap bg-barber py-1 pl-7 pr-7 text-[11px] text-cream [clip-path:polygon(1.1rem_0,calc(100%_-_1.1rem)_0,100%_100%,0_100%)] sm:ml-auto sm:mr-0 sm:min-h-8 sm:pl-8 sm:pr-8 sm:text-[13px] sm:[clip-path:polygon(1.1rem_0,100%_0,100%_100%,0_100%)]"
         >
           <span>
             {business.address.line1}, {business.address.city}
           </span>
-          <span className="text-cream/60" aria-hidden="true">
+          <span className="hidden text-cream/60 sm:inline" aria-hidden="true">
             |
           </span>
-          <a href={telHref()} className="tabular-nums hover:underline">
+          <a href={telHref()} className="hidden tabular-nums hover:underline sm:inline">
             {business.phoneDisplay}
           </a>
         </p>
       </div>
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
+      <div
+        className="mx-3 mb-2 flex h-16 items-center justify-between gap-3 rounded-full border bg-cream px-3 shadow-[0_0_0_1px_rgba(17,17,17,0.05),0_4px_14px_rgba(17,17,17,0.08),0_18px_40px_rgba(17,17,17,0.1)] sm:mx-auto sm:mb-0 sm:h-20 sm:max-w-7xl sm:gap-4 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-8 sm:shadow-none"
+        style={{ borderColor: "#c4c4c4" }}
+      >
         <Link href="/" className="flex shrink-0 items-center gap-3">
           <span
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-white sm:h-12 sm:w-12"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:h-12 sm:w-12 sm:rounded-none"
             style={{ border: "1px solid #c4c4c4" }}
           >
             <Image
@@ -120,32 +119,37 @@ export function Header() {
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((value) => !value)}
           >
-            <span className="flex h-3.5 w-4 flex-col justify-between" aria-hidden>
-              <span
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5 overflow-visible"
+              fill="none"
+              aria-hidden
+            >
+              <g
                 className={cn(
-                  "block h-[1.5px] w-full origin-center rounded-full bg-current transition-transform duration-300 ease-out motion-reduce:transition-none",
-                  open && "translate-y-[6.25px] rotate-45",
+                  "origin-center transition-all duration-300 ease-out motion-reduce:transition-none",
+                  open ? "scale-75 opacity-0" : "opacity-100",
                 )}
-              />
-              <span
+              >
+                <path d="M4 7.5h16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                <path d="M4 12h11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                <path d="M4 16.5h16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+              </g>
+              <g
                 className={cn(
-                  "block h-[1.5px] w-full origin-center rounded-full bg-current transition-all duration-200 ease-out motion-reduce:transition-none",
-                  open && "scale-x-0 opacity-0",
+                  "origin-center transition-all duration-300 ease-out motion-reduce:transition-none",
+                  open ? "opacity-100" : "scale-75 opacity-0",
                 )}
-              />
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full origin-center rounded-full bg-current transition-transform duration-300 ease-out motion-reduce:transition-none",
-                  open && "-translate-y-[6.25px] -rotate-45",
-                )}
-              />
-            </span>
+              >
+                <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+              </g>
+            </svg>
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-line bg-cream px-5 py-6 xl:hidden">
+        <div className="mx-3 mb-2 rounded-3xl border border-line bg-cream px-5 py-6 shadow-[0_4px_14px_rgba(17,17,17,0.07)] xl:hidden sm:mx-0 sm:mb-0 sm:rounded-none sm:border-x-0 sm:border-b-0 sm:shadow-none">
           <nav className="flex flex-col gap-4">
             {nav.map((item) => (
               <Link

@@ -61,6 +61,11 @@ h4,
     0 18px 40px rgba(17, 17, 17, 0.1);
 }
 
+button,
+a.rounded-full {
+  box-shadow: 0 4px 10px rgba(17, 17, 17, 0.12);
+}
+
 ::selection {
   background: #8b1e1e;
   color: #f7f3ec;
