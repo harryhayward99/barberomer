@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Barber Omer",
   },
   description:
-    "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07480 335904 or book online.",
+    "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07305 421210 or book online.",
   openGraph,
 };
 

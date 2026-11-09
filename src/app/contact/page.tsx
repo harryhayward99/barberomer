@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: { ...openGraph, url: "/contact" },
   alternates: { canonical: "/contact" },
   title: "Contact",
-  description: "Find Barber Omer at 40 Common Lane, Kenilworth. Call 07480 335904.",
+  description: "Find Barber Omer at 40 Common Lane, Kenilworth. Call 07305 421210.",
 };
 
 export default function ContactPage() {

@@ -1,8 +1,8 @@
 export const business = {
   name: "Barber Omer",
   established: 2015,
-  phoneDisplay: "07480 335904",
-  phoneTel: "+447480335904",
+  phoneDisplay: "07305 421210",
+  phoneTel: "+447305421210",
   email: process.env.BUSINESS_EMAIL || "hello@barberomer.co.uk",
   address: {
     line1: "40 Common Lane",
