@@ -1,3 +1,6 @@
+"use client";
+
+import { InteractiveMarquee } from "@/components/ui/InteractiveMarquee";
 import { business } from "@/lib/config/business";
 import { reviews } from "@/lib/config/reviews";
 import { cn, pageStartPad, sectionPad, sectionPadBottom } from "@/lib/utils";
@@ -12,8 +15,6 @@ function initials(name: string) {
 }
 
 export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
-  const looped = [...reviews, ...reviews];
-
   return (
     <section
       id="reviews"
@@ -46,33 +47,35 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
         </div>
       </div>
 
-      <div className="marquee overflow-hidden pt-8 pb-20">
-        <div className="marquee-track flex gap-4 px-1 pr-4">
-          {looped.map((review, index) => (
-            <figure
-              key={`${review.name}-${index}`}
-              className="surface-fade w-[300px] shrink-0 rounded-2xl bg-white p-5 sm:w-[360px]"
-              style={{ border: "1px solid #c4c4c4" }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-medium text-cream">
-                  {initials(review.name)}
-                </span>
-                <span
-                  className="text-sm tracking-[0.14em] text-barber"
-                  aria-label={`${review.stars} stars`}
-                >
-                  {"★".repeat(review.stars)}
-                </span>
-              </div>
-              <blockquote className="mt-4 text-[16px] leading-7 text-ink">
-                “{review.text}”
-              </blockquote>
-              <figcaption className="mt-5 text-sm text-muted">{review.name}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
+      <InteractiveMarquee
+        speed={36}
+        className="pt-8 pb-20"
+        trackClassName="gap-4 px-1 pr-4"
+      >
+        {reviews.map((review) => (
+          <figure
+            key={review.name}
+            className="surface-fade w-[300px] shrink-0 rounded-2xl bg-white p-5 sm:w-[360px]"
+            style={{ border: "1px solid #c4c4c4" }}
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-medium text-cream">
+                {initials(review.name)}
+              </span>
+              <span
+                className="text-sm tracking-[0.14em] text-barber"
+                aria-label={`${review.stars} stars`}
+              >
+                {"★".repeat(review.stars)}
+              </span>
+            </div>
+            <blockquote className="mt-4 text-[16px] leading-7 text-ink">
+              “{review.text}”
+            </blockquote>
+            <figcaption className="mt-5 text-sm text-muted">{review.name}</figcaption>
+          </figure>
+        ))}
+      </InteractiveMarquee>
 
       <div className="relative z-10 mx-auto -mt-8 max-w-7xl px-5 sm:px-8">
         <a

@@ -5,7 +5,7 @@ import { galleryRowA } from "@/lib/config/images";
 
 export function Hero() {
   return (
-    <section className="relative flex h-[calc(100dvh-5.75rem)] min-h-min flex-col pt-8 sm:h-[calc(100dvh-7rem)] sm:pt-10 lg:pt-14">
+    <section className="relative flex flex-col pt-8 sm:pt-10 lg:pt-14">
       <img
         src="/images/hero-corner.png"
         alt=""
@@ -70,7 +70,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mt-6 flex min-h-[100px] flex-1 px-5 pb-5 pt-2 sm:mt-8 sm:px-8 sm:pb-6">
+      <div className="relative z-10 mt-6 h-[240px] px-5 pb-5 pt-2 sm:mt-8 sm:h-[300px] sm:px-8 sm:pb-6 lg:h-[340px]">
         <MarqueeRow images={galleryRowA} priority fit />
       </div>
     </section>

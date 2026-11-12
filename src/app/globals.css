@@ -71,17 +71,6 @@ a.rounded-full {
   color: #f7f3ec;
 }
 
-.marquee-track {
-  animation: marquee 58s linear infinite;
-  width: max-content;
-}
-
-.marquee-track.reverse {
-  animation-direction: reverse;
-  animation-duration: 64s;
-}
-
-
 .book-widget-glow {
   position: absolute;
   inset: -7px;
@@ -131,19 +120,10 @@ a.rounded-full {
   pointer-events: none;
 }
 
-@keyframes marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track,
   .book-widget-glow,
   .status-light-glow {
+    animation: none;
   }
 
   html {
