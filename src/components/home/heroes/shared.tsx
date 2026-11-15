@@ -9,6 +9,8 @@ const heroSlideSrcs = [
   "/images/cuts/cut-black-mask-fade.png",
   "/images/cuts/cut-beard-shape-fade.jpg",
   "/images/cuts/cut-textured-crop.png",
+  "/images/cuts/cut-high-fade-shop.png",
+  "/images/cuts/cut-curly-fade.png",
 ] as const;
 
 /** Curated hero carousel — the cuts selected for the Plaza homepage. */

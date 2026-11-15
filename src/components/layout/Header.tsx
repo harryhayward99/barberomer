@@ -62,7 +62,7 @@ export function Header() {
               alt="Barber Omer Kenilworth"
               width={44}
               height={44}
-              className="h-10 w-10 object-contain sm:h-9 sm:w-9"
+              className="h-full w-full object-contain"
               priority
             />
           </span>

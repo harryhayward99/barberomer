@@ -43,7 +43,7 @@ export function HeroPlaza() {
           alt=""
           width={160}
           height={160}
-          className="absolute left-1/2 top-1/2 h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rotate-[35deg] object-contain opacity-95"
+          className="absolute left-1/2 top-1/2 h-[40%] w-[40%] -translate-x-1/2 -translate-y-1/2 rotate-[35deg] object-contain opacity-55"
         />
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
