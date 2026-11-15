@@ -88,7 +88,7 @@ export function ImageLightbox({
         type="button"
         aria-label="Close"
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-cream text-ink transition hover:bg-white sm:right-6 sm:top-6"
+        className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center border border-ink/10 bg-surface text-ink transition hover:bg-white sm:right-6 sm:top-6"
       >
         <X className="h-5 w-5" strokeWidth={2} />
       </button>
@@ -102,7 +102,7 @@ export function ImageLightbox({
               event.stopPropagation();
               onChange((index - 1 + images.length) % images.length);
             }}
-            className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-cream/95 text-ink transition hover:bg-white sm:left-6"
+            className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-ink/10 bg-surface/95 text-ink transition hover:bg-white sm:left-6"
           >
             <ChevronLeft className="h-5 w-5" strokeWidth={2} />
           </button>
@@ -113,7 +113,7 @@ export function ImageLightbox({
               event.stopPropagation();
               onChange((index + 1) % images.length);
             }}
-            className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-cream/95 text-ink transition hover:bg-white sm:right-6"
+            className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-ink/10 bg-surface/95 text-ink transition hover:bg-white sm:right-6"
           >
             <ChevronRight className="h-5 w-5" strokeWidth={2} />
           </button>

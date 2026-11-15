@@ -1,8 +1,12 @@
 import { openGraph } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { GalleryMarquee } from "@/components/home/GalleryMarquee";
 import { galleryImages } from "@/lib/config/images";
+import {
+  eyebrowClass,
+  pageStartPad,
+  sectionPadBottom,
+} from "@/lib/utils";
 
 export const metadata: Metadata = {
   openGraph: { ...openGraph, url: "/gallery" },
@@ -13,21 +17,31 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <>
-      <GalleryMarquee pageStart />
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-5 pb-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-3">
+    <section
+      className={`mx-auto max-w-7xl px-5 sm:px-8 ${pageStartPad} ${sectionPadBottom}`}
+    >
+      <p className={eyebrowClass}>Gallery</p>
+      <h1 className="section-title mt-4 max-w-xl">Fresh from the chair.</h1>
+      <p className="mt-5 max-w-md text-base leading-7 text-muted sm:text-lg sm:leading-8">
+        Real cuts. Real clients. Barber Omer.
+      </p>
+
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-3">
         {galleryImages.map((image) => (
-          <div key={image.src} className="overflow-hidden rounded-[1.6rem]">
+          <div
+            key={image.src}
+            className="relative aspect-square overflow-hidden border border-ink/10 bg-ink/5"
+          >
             <Image
               src={image.src}
               alt={image.alt}
-              width={800}
-              height={1000}
-              className="aspect-[4/5] w-full object-cover"
+              fill
+              sizes="(max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
             />
           </div>
         ))}
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

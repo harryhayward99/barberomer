@@ -12,9 +12,9 @@ function getResend() {
 function bookingHtml(booking: Booking) {
   const manageUrl = `${siteUrl}/booking/${booking.token}`;
   return `
-    <div style="font-family:Inter,Arial,sans-serif;background:#F7F3EC;padding:32px;color:#111111;">
-      <div style="max-width:520px;margin:0 auto;background:#ffffff;padding:32px;border-radius:24px;">
-        <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:12px;color:#8B1E1E;margin:0 0 12px;">Barber Omer</p>
+    <div style="font-family:Inter,Arial,sans-serif;background:#EBE4D7;padding:32px;color:#1C1815;">
+      <div style="max-width:520px;margin:0 auto;background:#F8F3EA;padding:32px;border-radius:24px;">
+        <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:12px;color:#6F1414;margin:0 0 12px;">Barber Omer</p>
         <h1 style="font-size:28px;margin:0 0 16px;">You're booked.</h1>
         <p style="margin:0 0 24px;line-height:1.6;">${booking.serviceName}<br/>${formatFriendlyDateTime(booking.startIso)}</p>
         <p style="margin:0 0 24px;line-height:1.6;">
@@ -27,13 +27,13 @@ function bookingHtml(booking: Booking) {
           Remaining at appointment: ${formatPrice(booking.remainingPence)}
         </p>
         <p style="margin:0 0 24px;">
-          <a href="tel:${business.phoneTel}" style="color:#8B1E1E;font-weight:600;">Call Omer — ${business.phoneDisplay}</a>
+          <a href="tel:${business.phoneTel}" style="color:#6F1414;font-weight:600;">Call Omer — ${business.phoneDisplay}</a>
         </p>
         <p style="margin:0 0 8px;">
-          <a href="${manageUrl}" style="color:#111111;">Reschedule appointment</a>
+          <a href="${manageUrl}" style="color:#1C1815;">Reschedule appointment</a>
         </p>
         <p style="margin:0;">
-          <a href="${manageUrl}" style="color:#111111;">Cancel appointment</a>
+          <a href="${manageUrl}" style="color:#1C1815;">Cancel appointment</a>
         </p>
       </div>
     </div>

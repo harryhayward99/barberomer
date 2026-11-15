@@ -75,6 +75,3 @@ export const shopSignImage = {
   src: "/images/omer-sign.png",
   alt: "Barber Omer shop sign — The Turkish Hair Master, open 7 days",
 };
-
-/** Single looping row used on the homepage hero and gallery page. */
-export const galleryRowA = [...galleryImages];

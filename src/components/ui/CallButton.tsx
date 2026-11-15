@@ -1,5 +1,5 @@
 import { business, telHref } from "@/lib/config/business";
-import { cn } from "@/lib/utils";
+import { btnPrimaryClass, cn } from "@/lib/utils";
 
 type CallButtonProps = {
   className?: string;
@@ -18,10 +18,8 @@ export function CallButton({
     <a
       href={telHref()}
       className={cn(
-        "inline-flex items-center justify-center rounded-full bg-barber text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep",
-        compact
-          ? "min-h-11 px-4 text-sm font-medium"
-          : "min-h-12 gap-2 px-5 text-[15px] font-medium",
+        btnPrimaryClass,
+        compact && "min-h-11 px-4 text-[12px]",
         className,
       )}
     >
@@ -31,8 +29,8 @@ export function CallButton({
         <>
           <span>{label}</span>
           {!compact && (
-            <span className="font-normal tabular-nums">
-              — {business.phoneDisplay}
+            <span className="ml-2 font-normal normal-case tracking-normal tabular-nums">
+              {business.phoneDisplay}
             </span>
           )}
         </>

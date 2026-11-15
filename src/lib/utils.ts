@@ -5,7 +5,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/** Top padding aligned with the homepage hero eyebrow. */
-export const pageStartPad = "pt-8 sm:pt-10 lg:pt-14";
-export const sectionPad = "py-20 lg:py-28";
-export const sectionPadBottom = "pb-20 lg:pb-28";
+/** Shared vertical rhythm — keep start/end of every section identical. */
+export const pageStartPad = "pt-8 sm:pt-10 lg:pt-12";
+export const sectionPadY = "py-16 sm:py-20 lg:py-24";
+export const sectionPadTop = "pt-16 sm:pt-20 lg:pt-24";
+export const sectionPadBottom = "pb-16 sm:pb-20 lg:pb-24";
+/** @deprecated alias — prefer sectionPadY */
+export const sectionPad = sectionPadY;
+
+export const eyebrowClass =
+  "font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted sm:text-[13px]";
+
+export const btnPrimaryClass =
+  "inline-flex min-h-12 items-center justify-center bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep";
+
+export const btnSecondaryClass =
+  "inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5";
+
+export const btnInkClass =
+  "inline-flex min-h-12 items-center justify-center bg-ink px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5";

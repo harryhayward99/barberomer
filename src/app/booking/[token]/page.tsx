@@ -13,7 +13,7 @@ export default async function ManageBookingPage({
 }) {
   const { token } = await params;
   return (
-    <section className="mx-auto max-w-7xl px-5 pb-16 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
+    <section className="mx-auto max-w-7xl px-5 pt-8 pb-16 sm:px-8 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24">
       <ManageBooking token={token} />
     </section>
   );

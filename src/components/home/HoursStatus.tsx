@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getOpenStatus } from "@/lib/booking/time";
 import { displayHours } from "@/lib/config/hours";
+import { cn, eyebrowClass, sectionPadY } from "@/lib/utils";
 
 function statusLine(status: { isOpen: boolean; label: string }) {
   if (status.isOpen) {
@@ -23,22 +24,16 @@ function StatusLight({ open }: { open: boolean }) {
       {open ? (
         <>
           <span className="status-light-glow" />
-          <span className="relative h-2.5 w-2.5" style={{ background: "#3DDC78" }} />
+          <span className="relative h-2.5 w-2.5 bg-[#3DDC78]" />
         </>
       ) : (
-        <span
-          className="h-2.5 w-2.5"
-          style={{
-            background: "#2a2a2a",
-            boxShadow: "inset 0 0 0 1px rgba(247,243,236,0.35)",
-          }}
-        />
+        <span className="h-2.5 w-2.5 bg-ink/80 shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)]" />
       )}
     </span>
   );
 }
 
-export function HoursStatus({ compact = false }: { compact?: boolean }) {
+export function HoursStatus() {
   const [status, setStatus] = useState(() => getOpenStatus());
   const [today, setToday] = useState(() =>
     new Intl.DateTimeFormat("en-GB", {
@@ -67,37 +62,40 @@ export function HoursStatus({ compact = false }: { compact?: boolean }) {
   return (
     <section
       id="hours"
-      className={`mx-auto max-w-7xl scroll-mt-28 px-5 sm:px-8 ${
-        compact ? "pb-20 pt-8 lg:pb-28 lg:pt-10" : "py-20 lg:py-28"
-      }`}
+      className={cn(
+        "mx-auto max-w-7xl scroll-mt-28 px-5 sm:px-8",
+        sectionPadY,
+      )}
     >
-      <div
-        className={
-          compact
-            ? "mx-auto max-w-xl"
-            : "grid items-start gap-12 lg:grid-cols-12"
-        }
-      >
-        <div className={compact ? "text-center" : "lg:col-span-5"}>
-          <p className="text-xs uppercase tracking-[0.22em] text-barber">Hours</p>
-          <h2 className="section-title mt-3">Open 7 days.</h2>
+      <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:col-span-5">
+          <p className={eyebrowClass}>Hours</p>
+          <h2 className="section-title mt-4">Open 7 days.</h2>
         </div>
-        <ul className={compact ? "mt-8" : "lg:col-span-7"}>
+        <ul className="border-t border-ink/10 lg:col-span-7">
           {displayHours.map((row) => {
             const isToday = row.day === today;
             return (
               <li
                 key={row.day}
-                className={`flex items-center justify-between gap-4 border-b border-line py-4 text-lg ${
-                  isToday ? "text-ink" : "text-muted"
-                }`}
+                className={cn(
+                  "flex items-center justify-between gap-4 border-b border-ink/10 py-4 text-lg",
+                  isToday ? "text-ink" : "text-muted",
+                )}
               >
                 <span className="flex items-center gap-3">
                   {isToday ? <StatusLight open={status.isOpen} /> : null}
                   <span>
-                    <span className={`block ${isToday ? "text-barber" : ""}`}>{row.day}</span>
+                    <span
+                      className={cn(
+                        "block font-medium",
+                        isToday && "text-ink",
+                      )}
+                    >
+                      {row.day}
+                    </span>
                     {isToday ? (
-                      <span className="mt-0.5 block text-xs uppercase tracking-[0.16em] text-ink">
+                      <span className="mt-0.5 block text-[11px] uppercase tracking-[0.16em] text-muted">
                         {line}
                       </span>
                     ) : null}

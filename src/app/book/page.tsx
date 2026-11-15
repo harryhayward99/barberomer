@@ -13,7 +13,7 @@ function BookInner({
   searchParams: { service?: string; cancelled?: string };
 }) {
   return (
-    <section className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8 sm:pt-10 lg:pb-20 lg:pt-14">
+    <section className="mx-auto max-w-7xl px-5 sm:px-8 pt-8 sm:pt-10 lg:pt-12 pb-16 sm:pb-20 lg:pb-24">
       {searchParams.cancelled && (
         <p className="mb-8 rounded-2xl border border-line px-4 py-3 text-sm">
           Payment was cancelled. That time has not been held. You can try again

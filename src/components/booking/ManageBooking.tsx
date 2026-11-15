@@ -83,14 +83,14 @@ export function ManageBooking({ token }: { token: string }) {
           <button
             type="button"
             onClick={() => setMode("reschedule")}
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-barber px-6 text-cream"
+            className="inline-flex min-h-12 items-center justify-center rounded-none bg-barber px-6 text-surface"
           >
             Reschedule appointment
           </button>
           <button
             type="button"
             onClick={cancel}
-            className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink px-6"
+            className="inline-flex min-h-12 items-center justify-center rounded-none border border-ink px-6"
           >
             Cancel appointment
           </button>
@@ -106,8 +106,8 @@ export function ManageBooking({ token }: { token: string }) {
                 type="button"
                 onClick={() => setDate(day.date)}
                 className={cn(
-                  "min-w-[7.5rem] rounded-2xl border px-4 py-4 text-left",
-                  date === day.date ? "border-barber bg-ink text-cream" : "border-line",
+                  "min-w-[7.5rem] rounded-none border px-4 py-4 text-left",
+                  date === day.date ? "border-barber bg-ink text-surface" : "border-line",
                 )}
               >
                 {formatFriendlyDate(day.date)}
@@ -123,8 +123,8 @@ export function ManageBooking({ token }: { token: string }) {
                   type="button"
                   onClick={() => setTime(slot)}
                   className={cn(
-                    "min-h-12 rounded-full border tabular-nums",
-                    time === slot ? "bg-barber text-cream" : "border-line",
+                    "min-h-12 rounded-none border tabular-nums",
+                    time === slot ? "bg-barber text-surface" : "border-line",
                   )}
                 >
                   {slot}
@@ -136,7 +136,7 @@ export function ManageBooking({ token }: { token: string }) {
             type="button"
             disabled={!date || !time}
             onClick={reschedule}
-            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-cream disabled:opacity-40"
+            className="mt-8 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
           >
             Save new time
           </button>

@@ -3,7 +3,15 @@
 import { InteractiveMarquee } from "@/components/ui/InteractiveMarquee";
 import { business } from "@/lib/config/business";
 import { reviews } from "@/lib/config/reviews";
-import { cn, pageStartPad, sectionPad, sectionPadBottom } from "@/lib/utils";
+import {
+  btnInkClass,
+  btnPrimaryClass,
+  cn,
+  eyebrowClass,
+  pageStartPad,
+  sectionPadBottom,
+  sectionPadY,
+} from "@/lib/utils";
 
 function initials(name: string) {
   return name
@@ -18,30 +26,37 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
   return (
     <section
       id="reviews"
-      className={cn(pageStart ? `${pageStartPad} ${sectionPadBottom}` : sectionPad)}
+      className={cn(
+        pageStart ? `${pageStartPad} ${sectionPadBottom}` : sectionPadY,
+      )}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-barber">Reviews</p>
-            <h2 className="section-title mt-3 max-w-xl">
+            <p className={eyebrowClass}>Reviews</p>
+            <h2 className="section-title mt-4 max-w-xl">
               Kenilworth keeps coming back.
             </h2>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-5">
             <div>
-              <p className="font-heading text-[clamp(2.75rem,8vw,3.75rem)] tracking-tight">
-                {business.rating} <span className="text-barber">★</span>
+              <p className="font-heading text-[clamp(2.75rem,8vw,3.75rem)] leading-none tracking-tight">
+                {business.rating}{" "}
+                <span className="text-barber" aria-hidden>
+                  ★
+                </span>
               </p>
-              <p className="mt-1 text-sm text-muted">Google rating</p>
+              <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted">
+                Google rating
+              </p>
             </div>
             <a
               href={business.googleReviewsUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-barber px-4 text-sm font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+              className={btnPrimaryClass}
             >
-              Leave a Review
+              Leave a review
             </a>
           </div>
         </div>
@@ -49,17 +64,16 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
 
       <InteractiveMarquee
         speed={36}
-        className="pt-8 pb-20"
+        className="mt-10"
         trackClassName="gap-4 px-1 pr-4"
       >
         {reviews.map((review) => (
           <figure
             key={review.name}
-            className="surface-fade w-[300px] shrink-0 rounded-2xl bg-white p-5 sm:w-[360px]"
-            style={{ border: "1px solid #c4c4c4" }}
+            className="w-[300px] shrink-0 border border-ink/10 bg-surface p-5 sm:w-[360px] sm:p-6"
           >
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-medium text-cream">
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-ink/10 bg-ink text-[11px] font-medium uppercase tracking-[0.08em] text-surface">
                 {initials(review.name)}
               </span>
               <span
@@ -69,22 +83,24 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
                 {"★".repeat(review.stars)}
               </span>
             </div>
-            <blockquote className="mt-4 text-[16px] leading-7 text-ink">
+            <blockquote className="mt-5 text-[16px] leading-7 text-ink">
               “{review.text}”
             </blockquote>
-            <figcaption className="mt-5 text-sm text-muted">{review.name}</figcaption>
+            <figcaption className="mt-5 text-[11px] uppercase tracking-[0.16em] text-muted">
+              {review.name}
+            </figcaption>
           </figure>
         ))}
       </InteractiveMarquee>
 
-      <div className="relative z-10 mx-auto -mt-8 max-w-7xl px-5 sm:px-8">
+      <div className="relative z-10 mx-auto mt-10 max-w-7xl px-5 sm:px-8">
         <a
           href={business.googleReviewsUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 text-[15px] font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5"
+          className={btnInkClass}
         >
-          See Google Reviews
+          See Google reviews
         </a>
       </div>
     </section>

@@ -1,5 +1,12 @@
 import { business } from "@/lib/config/business";
-import { cn, pageStartPad, sectionPadBottom } from "@/lib/utils";
+import {
+  btnPrimaryClass,
+  btnSecondaryClass,
+  cn,
+  eyebrowClass,
+  pageStartPad,
+  sectionPadBottom,
+} from "@/lib/utils";
 
 export function ContactBoard() {
   return (
@@ -7,12 +14,12 @@ export function ContactBoard() {
       id="contact"
       className={cn("mx-auto max-w-7xl px-5 sm:px-8", pageStartPad, sectionPadBottom)}
     >
-      <p className="text-xs uppercase tracking-[0.22em] text-barber">Find us</p>
+      <p className={eyebrowClass}>Find us</p>
 
-      <div className="mt-6 grid items-end gap-8 border-y border-ink py-10 lg:grid-cols-12 lg:gap-6 lg:py-12">
+      <div className="mt-6 grid items-end gap-8 border-y border-ink/15 py-10 lg:grid-cols-12 lg:gap-6 lg:py-12">
         <div className="lg:col-span-5">
           <h2 className="section-title">{business.name}</h2>
-          <p className="mt-5 text-lg leading-8 text-muted">
+          <p className="mt-5 text-base leading-8 text-muted sm:text-lg">
             {business.address.line1}
             <br />
             {business.address.city}
@@ -23,7 +30,7 @@ export function ContactBoard() {
         <div className="lg:col-span-7 lg:text-right">
           <a
             href={`tel:${business.phoneTel}`}
-            className="block font-heading text-4xl leading-none tracking-tight text-barber sm:text-5xl"
+            className="block font-heading text-4xl leading-none tracking-tight text-ink sm:text-5xl"
           >
             {business.phoneDisplay}
           </a>
@@ -35,17 +42,17 @@ export function ContactBoard() {
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-barber px-5 text-[15px] font-medium text-cream transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+              className={btnPrimaryClass}
             >
-              Book Online Now
+              Book online
             </a>
             <a
               href={business.directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink px-6 text-[15px] font-medium"
+              className={btnSecondaryClass}
             >
-              Get Directions
+              Get directions
             </a>
           </div>
         </div>
@@ -55,11 +62,11 @@ export function ContactBoard() {
         {business.amenities.join(" · ")}
       </p>
 
-      <div className="mt-8 h-[280px] overflow-hidden rounded-2xl border border-line sm:rounded-[1.75rem] lg:h-[340px]">
+      <div className="mt-8 h-[280px] overflow-hidden border border-ink/10 lg:h-[340px]">
         <iframe
           title="Map to Barber Omer, 40 Common Lane, Kenilworth"
           src={business.mapEmbedUrl}
-          className="h-full w-full border-0"
+          className="h-full w-full border-0 grayscale-[20%]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />

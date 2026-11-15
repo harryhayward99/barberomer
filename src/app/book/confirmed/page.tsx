@@ -33,7 +33,7 @@ export default async function ConfirmedPage({
 
   if (!booking || booking.status !== "confirmed") {
     return (
-      <section className="mx-auto max-w-3xl px-5 pb-20 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
+      <section className="mx-auto max-w-3xl px-5 sm:px-8 pt-8 sm:pt-10 lg:pt-12 pb-16 sm:pb-20 lg:pb-24">
         <h1 className="text-4xl sm:text-6xl">Payment still pending.</h1>
         <p className="mt-5 text-lg text-muted">
           If you have just paid, give it a moment and refresh. If anything looks
@@ -47,9 +47,13 @@ export default async function ConfirmedPage({
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-5 pb-20 pt-8 sm:px-8 sm:pt-10 lg:pt-14">
-      <p className="text-xs uppercase tracking-[0.22em] text-barber">Confirmed</p>
-      <h1 className="mt-3 text-5xl leading-none sm:text-7xl">You&apos;re booked.</h1>
+    <section className="mx-auto max-w-3xl px-5 sm:px-8 pt-8 sm:pt-10 lg:pt-12 pb-16 sm:pb-20 lg:pb-24">
+      <p className="font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted">
+        Confirmed
+      </p>
+      <h1 className="mt-4 font-heading text-5xl leading-none tracking-tight sm:text-7xl">
+        You&apos;re booked.
+      </h1>
       <p className="mt-8 text-2xl">{booking.serviceName}</p>
       <p className="mt-3 text-lg text-muted">{formatFriendlyDateTime(booking.startIso)}</p>
       <p className="mt-8 leading-8 text-muted">
@@ -70,9 +74,9 @@ export default async function ConfirmedPage({
         <CallButton />
         <a
           href={`/api/calendar/${booking.token}`}
-          className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink px-6 text-[15px] font-medium"
+          className="inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5"
         >
-          Add to Calendar
+          Add to calendar
         </a>
       </div>
       <div className="mt-8 flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">

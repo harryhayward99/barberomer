@@ -31,7 +31,7 @@ function CircleArrow({
   return (
     <span
       className={cn(
-        "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink",
+        "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none border border-ink/20 text-ink",
         className,
       )}
       aria-hidden="true"
@@ -170,8 +170,8 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
           <li
             key={label}
             className={cn(
-              "rounded-full px-3 py-1",
-              step === index + 1 && "bg-ink text-cream",
+              "rounded-none px-3 py-1",
+              step === index + 1 && "bg-ink text-surface",
             )}
           >
             {label}
@@ -200,9 +200,9 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                           type="button"
                           onClick={() => selectService(item.id)}
                           className={cn(
-                            "flex w-full items-center justify-between gap-4 rounded-2xl border px-5 py-5 text-left transition-colors hover:border-ink",
+                            "flex w-full items-center justify-between gap-4 rounded-none border px-5 py-5 text-left transition-colors hover:border-ink",
                             selected
-                              ? "border-barber bg-ink text-cream"
+                              ? "border-barber bg-ink text-surface"
                               : "border-line",
                             item.featured && !selected && "border-barber/40 bg-ink/[0.03]",
                           )}
@@ -213,7 +213,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                               <span
                                 className={cn(
                                   "mt-1 block text-sm",
-                                  selected ? "text-cream/70" : "text-muted",
+                                  selected ? "text-surface/70" : "text-muted",
                                 )}
                               >
                                 {item.description}
@@ -222,7 +222,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                             <span
                               className={cn(
                                 "mt-1 block text-sm",
-                                selected ? "text-cream/70" : "text-muted",
+                                selected ? "text-surface/70" : "text-muted",
                               )}
                             >
                               {formatDuration(item.durationMinutes)}
@@ -232,7 +232,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                             <span
                               className={cn(
                                 "text-lg tabular-nums",
-                                selected ? "text-cream" : "text-barber",
+                                selected ? "text-surface" : "text-barber",
                               )}
                             >
                               {formatPrice(item.pricePence)}
@@ -241,7 +241,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                               direction="right"
                               className={
                                 selected
-                                  ? "border-cream/40 text-cream"
+                                  ? "border-surface/40 text-surface"
                                   : undefined
                               }
                             />
@@ -280,9 +280,9 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                   setTime("");
                 }}
                 className={cn(
-                  "min-w-[7.5rem] rounded-2xl border px-4 py-4 text-left",
+                  "min-w-[7.5rem] rounded-none border px-4 py-4 text-left",
                   date === day.date
-                    ? "border-barber bg-ink text-cream"
+                    ? "border-barber bg-ink text-surface"
                     : "border-line",
                 )}
               >
@@ -290,7 +290,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                 <span
                   className={cn(
                     "mt-1 block text-xs",
-                    date === day.date ? "text-cream/70" : "text-muted",
+                    date === day.date ? "text-surface/70" : "text-muted",
                   )}
                 >
                   {day.slots.length} times
@@ -306,9 +306,9 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                   type="button"
                   onClick={() => setTime(slot)}
                   className={cn(
-                    "min-h-12 rounded-full border tabular-nums",
+                    "min-h-12 rounded-none border tabular-nums",
                     time === slot
-                      ? "border-barber bg-barber text-cream"
+                      ? "border-barber bg-barber text-surface"
                       : "border-line hover:border-ink",
                   )}
                 >
@@ -321,7 +321,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
             type="button"
             disabled={!date || !time}
             onClick={() => setStep(3)}
-            className="mt-10 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-cream disabled:opacity-40"
+            className="mt-10 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
           >
             Continue
           </button>
@@ -331,7 +331,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
       {step === 3 && service && (
         <div>
           <BackButton onClick={() => setStep(2)} />
-          <div className="mt-6 rounded-2xl border border-line px-5 py-5">
+          <div className="mt-6 rounded-none border border-line px-5 py-5">
             <p className="text-lg">{service.name}</p>
             <p className="mt-1 text-muted">
               {formatFriendlyDate(date)} · {time}
@@ -355,7 +355,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                 required
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="min-h-12 w-full rounded-2xl border border-line bg-cream px-4 outline-none focus:border-ink"
+                className="min-h-12 w-full rounded-none border border-line bg-surface px-4 outline-none focus:border-ink"
               />
             </label>
             <label className="block">
@@ -365,7 +365,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                 type="tel"
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
-                className="min-h-12 w-full rounded-2xl border border-line bg-cream px-4 outline-none focus:border-ink"
+                className="min-h-12 w-full rounded-none border border-line bg-surface px-4 outline-none focus:border-ink"
               />
             </label>
             <label className="block">
@@ -375,7 +375,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="min-h-12 w-full rounded-2xl border border-line bg-cream px-4 outline-none focus:border-ink"
+                className="min-h-12 w-full rounded-none border border-line bg-surface px-4 outline-none focus:border-ink"
               />
             </label>
             <label className="block">
@@ -384,12 +384,12 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
                 value={notes}
                 onChange={(event) => setNotes(event.target.value)}
                 rows={3}
-                className="w-full rounded-2xl border border-line bg-cream px-4 py-3 outline-none focus:border-ink"
+                className="w-full rounded-none border border-line bg-surface px-4 py-3 outline-none focus:border-ink"
               />
             </label>
             <button
               type="submit"
-              className="inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-cream"
+              className="inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface"
             >
               Review deposit
             </button>
@@ -431,7 +431,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
           </dl>
           {error && <p className="mt-6 text-barber">{error}</p>}
           {fallback && (
-            <div className="mt-6 rounded-2xl border border-line p-5">
+            <div className="mt-6 rounded-none border border-line p-5">
               <p>{fallback}</p>
               <div className="mt-4">
                 <CallButton />
@@ -442,7 +442,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
             type="button"
             disabled={loading}
             onClick={pay}
-            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-cream disabled:opacity-40"
+            className="mt-8 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
           >
             {loading ? "Taking you to payment…" : "Pay deposit"}
           </button>

@@ -2,6 +2,7 @@ import { openGraph } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { About } from "@/components/home/About";
 import { HoursStatus } from "@/components/home/HoursStatus";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = {
   openGraph: { ...openGraph, url: "/about" },
@@ -15,7 +16,8 @@ export default function AboutPage() {
   return (
     <>
       <About pageStart />
-      <HoursStatus compact />
+      <SectionDivider />
+      <HoursStatus />
     </>
   );
 }
