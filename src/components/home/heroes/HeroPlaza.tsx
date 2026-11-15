@@ -49,32 +49,28 @@ export function HeroPlaza() {
         />
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
-          <div className="relative flex flex-col lg:col-span-5">
-            <div className="flex flex-1 flex-col justify-between">
-              <div>
-                <p className="font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted sm:text-[13px]">
-                  Kenilworth · Since {business.established}
-                </p>
-                <h1 className="mt-4 max-w-md text-[clamp(2.5rem,6.2vw,4.15rem)] font-semibold uppercase leading-[0.9] tracking-[-0.04em]">
-                  Sharp cuts.
-                  <br />
-                  Fair prices.
-                </h1>
-              </div>
-              <p className="mt-5 max-w-sm text-base leading-7 text-muted sm:text-lg sm:leading-8 lg:mt-0">
-                Omer&apos;s been cutting hair on Common Lane since{" "}
-                {business.established} — calm, careful, and properly welcoming.
-              </p>
-            </div>
-            <div className="mt-5 flex min-h-12 flex-wrap items-center gap-3">
+        <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="relative lg:col-span-5">
+            <p className="font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted sm:text-[13px]">
+              Kenilworth · Since {business.established}
+            </p>
+            <h1 className="mt-4 max-w-md text-[clamp(2.5rem,7vw,4.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.04em]">
+              Sharp cuts.
+              <br />
+              Fair prices.
+            </h1>
+            <p className="mt-5 max-w-sm text-base leading-7 text-muted sm:text-lg sm:leading-8">
+              Omer&apos;s been cutting hair on Common Lane since{" "}
+              {business.established} — calm, careful, and properly welcoming.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <HeroBookButton />
               <HeroContactLink />
             </div>
           </div>
 
-          <div className="relative flex flex-col lg:col-span-7">
-            <div className="grid flex-1 grid-cols-12 items-end gap-3 sm:gap-4">
+          <div className="relative lg:col-span-7">
+            <div className="grid grid-cols-12 items-end gap-3 sm:gap-4">
               <div className="surface-fade relative col-span-8 aspect-square overflow-hidden border border-ink/10 bg-ink/5">
                 {slides.map((image, i) => (
                   <Image
@@ -116,7 +112,7 @@ export function HeroPlaza() {
               </div>
             </div>
 
-            <div className="mt-5 flex min-h-12 items-center justify-end gap-4 sm:justify-between">
+            <div className="mt-5 flex items-center justify-end gap-4 sm:justify-between">
               <div className="hidden items-center gap-3 text-[12px] uppercase tracking-[0.2em] text-muted sm:flex">
                 <span className="tabular-nums text-ink">
                   {String(index + 1).padStart(2, "0")}
@@ -132,7 +128,7 @@ export function HeroPlaza() {
                   aria-label="Previous image"
                   onClick={() => go(-1)}
                   className={cn(
-                    "inline-flex h-12 w-12 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
+                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
                     liftShadow,
                   )}
                 >
@@ -143,7 +139,7 @@ export function HeroPlaza() {
                   aria-label="Next image"
                   onClick={() => go(1)}
                   className={cn(
-                    "inline-flex h-12 w-12 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
+                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
                     liftShadow,
                   )}
                 >
