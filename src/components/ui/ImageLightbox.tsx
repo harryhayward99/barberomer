@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { business } from "@/lib/config/business";
+import { btnPrimaryClass, cn, liftShadow } from "@/lib/utils";
 
 export type LightboxImage = {
   src: string;
@@ -23,35 +26,17 @@ export function ImageLightbox({
   onChange,
 }: ImageLightboxProps) {
   const image = images[index] ?? images[0];
-  const [top, setTop] = useState(0);
 
   useEffect(() => {
-    const header = document.querySelector("header");
     const scrollY = window.scrollY;
-
-    const measure = () => {
-      if (!header) {
-        setTop(0);
-        return;
-      }
-      // Use layout height so sticky scroll position cannot push the overlay
-      // up over the header.
-      setTop(Math.round(header.getBoundingClientRect().height || header.offsetHeight));
-    };
-
-    // Bring the sticky header back to the top of the viewport, then lock scroll.
-    window.scrollTo(0, 0);
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
-    measure();
-
-    window.addEventListener("resize", measure);
-    const observer = header ? new ResizeObserver(measure) : null;
-    if (header && observer) observer.observe(header);
+    document.documentElement.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener("resize", measure);
-      observer?.disconnect();
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
       window.scrollTo(0, scrollY);
     };
   }, []);
@@ -73,58 +58,43 @@ export function ImageLightbox({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [image, images.length, index, onChange, onClose]);
 
-  if (!image) return null;
+  if (!image || typeof document === "undefined") return null;
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label={image.alt}
-      className="fixed inset-x-0 bottom-0 z-[35] flex flex-col bg-ink/90 p-4 sm:p-6"
-      style={{ top }}
+      className="fixed inset-0 z-[100] flex flex-col bg-ink"
       onClick={onClose}
     >
-      <button
-        type="button"
-        aria-label="Close"
-        onClick={onClose}
-        className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center border border-ink/10 bg-surface text-ink transition hover:bg-white sm:right-6 sm:top-6"
-      >
-        <X className="h-5 w-5" strokeWidth={2} />
-      </button>
-
-      {images.length > 1 ? (
-        <>
-          <button
-            type="button"
-            aria-label="Previous image"
-            onClick={(event) => {
-              event.stopPropagation();
-              onChange((index - 1 + images.length) % images.length);
-            }}
-            className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-ink/10 bg-surface/95 text-ink transition hover:bg-white sm:left-6"
-          >
-            <ChevronLeft className="h-5 w-5" strokeWidth={2} />
-          </button>
-          <button
-            type="button"
-            aria-label="Next image"
-            onClick={(event) => {
-              event.stopPropagation();
-              onChange((index + 1) % images.length);
-            }}
-            className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-ink/10 bg-surface/95 text-ink transition hover:bg-white sm:right-6"
-          >
-            <ChevronRight className="h-5 w-5" strokeWidth={2} />
-          </button>
-        </>
-      ) : null}
-
-      <figure
-        className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-10 sm:px-16"
+      <div
+        className="relative z-10 flex items-center justify-between gap-4 px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="relative min-h-0 w-full flex-1 overflow-hidden">
+        <a
+          href={business.bookingUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(btnPrimaryClass, liftShadow, "min-h-11 px-6")}
+        >
+          Book
+        </a>
+        <button
+          type="button"
+          aria-label="Close"
+          onClick={onClose}
+          className="inline-flex h-11 w-11 items-center justify-center border border-surface/20 bg-surface/10 text-surface transition hover:bg-surface hover:text-ink"
+        >
+          <X className="h-5 w-5" strokeWidth={2} />
+        </button>
+      </div>
+
+      <figure
+        className="relative mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col items-center justify-center px-4 py-6 sm:px-10 sm:py-8"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="relative h-full w-full max-h-[calc(100dvh-11.5rem)] min-h-[50vh]">
           <Image
             src={image.src}
             alt={image.alt}
@@ -134,10 +104,40 @@ export function ImageLightbox({
             className="object-contain"
           />
         </div>
-        <figcaption className="mt-3 max-w-2xl shrink-0 text-center text-sm leading-6 text-cream/85 sm:mt-4">
-          {image.alt}
-        </figcaption>
       </figure>
-    </div>
+
+      {images.length > 1 ? (
+        <div
+          className="relative z-10 flex items-center justify-center gap-4 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:gap-5 sm:px-6 sm:pb-6"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            aria-label="Previous image"
+            onClick={() =>
+              onChange((index - 1 + images.length) % images.length)
+            }
+            className="inline-flex h-12 w-12 items-center justify-center border border-surface/20 bg-surface/10 text-surface transition hover:bg-surface hover:text-ink"
+          >
+            <ChevronLeft className="h-5 w-5" strokeWidth={2} />
+          </button>
+          <p className="min-w-[4.5rem] text-center text-[12px] uppercase tracking-[0.2em] text-surface/70 tabular-nums">
+            {String(index + 1).padStart(2, "0")}
+            <span className="text-surface/35">
+              /{String(images.length).padStart(2, "0")}
+            </span>
+          </p>
+          <button
+            type="button"
+            aria-label="Next image"
+            onClick={() => onChange((index + 1) % images.length)}
+            className="inline-flex h-12 w-12 items-center justify-center border border-surface/20 bg-surface/10 text-surface transition hover:bg-surface hover:text-ink"
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={2} />
+          </button>
+        </div>
+      ) : null}
+    </div>,
+    document.body,
   );
 }

@@ -7,6 +7,7 @@ import {
   HeroContactLink,
   heroSlides,
 } from "@/components/home/heroes/shared";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { business } from "@/lib/config/business";
 import { cn, liftShadow, pageStartPad, sectionPadBottom } from "@/lib/utils";
 
@@ -14,17 +15,22 @@ import { cn, liftShadow, pageStartPad, sectionPadBottom } from "@/lib/utils";
 export function HeroPlaza() {
   const slides = heroSlides;
   const [index, setIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const side = slides[(index + 1) % slides.length];
 
   const go = (direction: -1 | 1) => {
     setIndex((value) => (value + direction + slides.length) % slides.length);
   };
 
+  const openAt = (next: number) => {
+    setIndex(next);
+    setLightboxOpen(true);
+  };
+
   return (
     <section
       className={cn("relative bg-cream", pageStartPad, sectionPadBottom)}
     >
-      {/* Wash + oxblood logo — top-right on small screens; mid gap on large */}
       <div
         aria-hidden
         className={cn(
@@ -71,7 +77,12 @@ export function HeroPlaza() {
 
           <div className="relative lg:col-span-7">
             <div className="grid grid-cols-12 items-end gap-3 sm:gap-4">
-              <div className="surface-fade relative col-span-8 aspect-square overflow-hidden border border-ink/10 bg-ink/5">
+              <button
+                type="button"
+                aria-label={`View ${slides[index]?.alt ?? "cut"} larger`}
+                onClick={() => openAt(index)}
+                className="surface-fade relative col-span-8 aspect-square cursor-zoom-in overflow-hidden border border-ink/10 bg-ink/5 text-left"
+              >
                 {slides.map((image, i) => (
                   <Image
                     key={image.src}
@@ -86,10 +97,15 @@ export function HeroPlaza() {
                     )}
                   />
                 ))}
-              </div>
+              </button>
 
               <div className="col-span-4 flex flex-col gap-3 sm:gap-4">
-                <div className="surface-fade relative aspect-square overflow-hidden border border-ink/10 bg-ink/5">
+                <button
+                  type="button"
+                  aria-label={`View ${side.alt} larger`}
+                  onClick={() => openAt((index + 1) % slides.length)}
+                  className="surface-fade relative aspect-square cursor-zoom-in overflow-hidden border border-ink/10 bg-ink/5 text-left"
+                >
                   <Image
                     src={side.src}
                     alt={side.alt}
@@ -97,7 +113,7 @@ export function HeroPlaza() {
                     sizes="25vw"
                     className="object-cover"
                   />
-                </div>
+                </button>
                 <div className="surface-fade flex aspect-square flex-col justify-between border border-ink/10 bg-ink p-3 text-surface sm:p-4">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-surface/55">
                     From the chair
@@ -150,6 +166,15 @@ export function HeroPlaza() {
           </div>
         </div>
       </div>
+
+      {lightboxOpen ? (
+        <ImageLightbox
+          images={slides}
+          index={index}
+          onClose={() => setLightboxOpen(false)}
+          onChange={setIndex}
+        />
+      ) : null}
     </section>
   );
 }
