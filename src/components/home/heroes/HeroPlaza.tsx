@@ -25,16 +25,27 @@ export function HeroPlaza() {
     <section
       className={cn("relative overflow-hidden bg-cream", pageStartPad, sectionPadBottom)}
     >
-      {/* Static background wash — smaller, fully on-canvas soft radial (no hard mid cut) */}
-      {/* Wash at header-bottom height, centred on the far right — full soft radial (no top clip) */}
+      {/* Far-right wash + oxblood logo centred on the fade (hero only) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 right-0 z-0 h-44 w-44 translate-x-1/2 sm:h-52 sm:w-52"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--red) 42%, transparent) 0%, color-mix(in srgb, var(--red) 16%, transparent) 46%, transparent 72%)",
-        }}
-      />
+        className="pointer-events-none absolute top-1 right-0 z-0 h-44 w-44 sm:top-2 sm:h-52 sm:w-52"
+        style={{ transform: "translate(calc(50% - 50px), -30px)" }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--red) 42%, transparent) 0%, color-mix(in srgb, var(--red) 16%, transparent) 46%, transparent 72%)",
+          }}
+        />
+        <Image
+          src="/images/logo-oxblood.png"
+          alt=""
+          width={160}
+          height={160}
+          className="absolute left-1/2 top-1/2 h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rotate-[35deg] object-contain opacity-95"
+        />
+      </div>
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="relative lg:col-span-5">
