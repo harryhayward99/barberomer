@@ -35,9 +35,15 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <p className={eyebrowClass}>Reviews</p>
-            <h2 className="section-title mt-4 max-w-xl">
-              Kenilworth keeps coming back.
-            </h2>
+            {pageStart ? (
+              <h1 className="section-title mt-4 max-w-xl">
+                Kenilworth keeps coming back.
+              </h1>
+            ) : (
+              <h2 className="section-title mt-4 max-w-xl">
+                Kenilworth keeps coming back.
+              </h2>
+            )}
           </div>
           <div className="flex flex-wrap items-center gap-5">
             <div>

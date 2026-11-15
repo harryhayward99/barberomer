@@ -1,11 +1,14 @@
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { BookingWizard } from "@/components/booking/BookingWizard";
 
-export const metadata: Metadata = {
-  title: "Book",
-  description: "Book Barber Omer online. Choose a service, pick a time and pay a 25% deposit.",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/book",
+  title: "Book online",
+  description:
+    "Book a haircut with Barber Omer in Kenilworth. Choose a service, pick a time and pay a 25% deposit online.",
+});
 
 function BookInner({
   searchParams,

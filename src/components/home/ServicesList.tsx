@@ -32,7 +32,11 @@ export function ServicesList({
     >
       <div className="max-w-2xl">
         <p className={eyebrowClass}>Services</p>
-        <h2 className="section-title mt-4">{heading}</h2>
+        {pageStart ? (
+          <h1 className="section-title mt-4">{heading}</h1>
+        ) : (
+          <h2 className="section-title mt-4">{heading}</h2>
+        )}
         <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
           {intro}
         </p>

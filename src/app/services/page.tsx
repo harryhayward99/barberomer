@@ -1,14 +1,13 @@
-import { openGraph } from "@/lib/config/seo";
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { ServicesList } from "@/components/home/ServicesList";
 
-export const metadata: Metadata = {
-  openGraph: { ...openGraph, url: "/services" },
-  alternates: { canonical: "/services" },
+export const metadata: Metadata = pageMetadata({
+  path: "/services",
   title: "Services & prices",
   description:
-    "Haircuts, skin fades, hot towel shaves and grooming packages at Barber Omer, Kenilworth.",
-};
+    "Haircut, skin fade, hot towel shave and grooming prices at Barber Omer in Kenilworth. Book online or call 07305 421210.",
+});
 
 export default function ServicesPage() {
   return (

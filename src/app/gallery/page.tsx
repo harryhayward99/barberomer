@@ -1,4 +1,4 @@
-import { openGraph } from "@/lib/config/seo";
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { galleryImages } from "@/lib/config/images";
@@ -8,12 +8,13 @@ import {
   sectionPadBottom,
 } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  openGraph: { ...openGraph, url: "/gallery" },
-  alternates: { canonical: "/gallery" },
+export const metadata: Metadata = pageMetadata({
+  path: "/gallery",
   title: "Gallery",
-  description: "Recent cuts from the chair at Barber Omer, Kenilworth.",
-};
+  description:
+    "Skin fades, textured crops and clean lineups from Barber Omer’s chair in Kenilworth — real cuts, real clients.",
+  image: "/images/cuts/cut-textured-fade.png",
+});
 
 export default function GalleryPage() {
   return (

@@ -42,9 +42,15 @@ export function About({ pageStart = false }: { pageStart?: boolean }) {
 
         <div className="lg:col-span-7">
           <p className={eyebrowClass}>About</p>
-          <h2 className="section-title mt-4 max-w-lg">
-            Your local barber since {business.established}.
-          </h2>
+          {pageStart ? (
+            <h1 className="section-title mt-4 max-w-lg">
+              Your local barber since {business.established}.
+            </h1>
+          ) : (
+            <h2 className="section-title mt-4 max-w-lg">
+              Your local barber since {business.established}.
+            </h2>
+          )}
           <div className="mt-6 max-w-lg space-y-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
             <p>
               Barber Omer is built around straightforward good service: taking

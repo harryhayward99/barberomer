@@ -1,12 +1,13 @@
-import { openGraph } from "@/lib/config/seo";
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { bookingPolicy } from "@/lib/config/policy";
 
-export const metadata: Metadata = {
-  openGraph: { ...openGraph, url: "/booking-policy" },
-  alternates: { canonical: "/booking-policy" },
+export const metadata: Metadata = pageMetadata({
+  path: "/booking-policy",
   title: "Booking & cancellation policy",
-};
+  description:
+    "Deposits, cancellations and booking rules for Barber Omer in Kenilworth — clear terms before you book.",
+});
 
 export default function BookingPolicyPage() {
   return (

@@ -1,16 +1,15 @@
-import { openGraph } from "@/lib/config/seo";
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { About } from "@/components/home/About";
 import { HoursStatus } from "@/components/home/HoursStatus";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
-export const metadata: Metadata = {
-  openGraph: { ...openGraph, url: "/about" },
-  alternates: { canonical: "/about" },
+export const metadata: Metadata = pageMetadata({
+  path: "/about",
   title: "About",
   description:
-    "Barber Omer has been looking after Kenilworth since 2015 — precise cuts, friendly service, fair prices.",
-};
+    "Barber Omer has looked after Kenilworth since 2015 — precise cuts, friendly service and fair prices on Common Lane.",
+});
 
 export default function AboutPage() {
   return (

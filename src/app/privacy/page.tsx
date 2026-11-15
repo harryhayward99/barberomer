@@ -1,12 +1,13 @@
-import { openGraph } from "@/lib/config/seo";
+import { pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { business } from "@/lib/config/business";
 
-export const metadata: Metadata = {
-  openGraph: { ...openGraph, url: "/privacy" },
-  alternates: { canonical: "/privacy" },
+export const metadata: Metadata = pageMetadata({
+  path: "/privacy",
   title: "Privacy Policy",
-};
+  description:
+    "How Barber Omer in Kenilworth uses booking details — name, phone and email — to run your appointment.",
+});
 
 export default function PrivacyPage() {
   return (
@@ -18,7 +19,7 @@ export default function PrivacyPage() {
           name, mobile number, email and any notes you choose to leave.
         </p>
         <p>
-          That information is used to confirm the booking, place it in Omer’s
+          That information is used to confirm the booking, place it in Omer&apos;s
           calendar and send you a confirmation. It is not sold or used for
           marketing lists.
         </p>
@@ -27,7 +28,8 @@ export default function PrivacyPage() {
           full card details.
         </p>
         <p>
-          To ask about the information held on a booking, call {business.phoneDisplay}.
+          To ask about the information held on a booking, call{" "}
+          {business.phoneDisplay}.
         </p>
       </div>
     </section>

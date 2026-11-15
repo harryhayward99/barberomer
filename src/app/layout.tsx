@@ -1,9 +1,13 @@
-import { openGraph } from "@/lib/config/seo";
+import {
+  buildLocalBusinessJsonLd,
+  openGraph,
+  rootMetadataExtras,
+} from "@/lib/config/seo";
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BookWidget } from "@/components/ui/BookWidget";
-import { business, siteUrl } from "@/lib/config/business";
+import { siteUrl } from "@/lib/config/business";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/sora/600.css";
@@ -18,35 +22,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Barber Omer | Modern barbering in Kenilworth",
+    default: "Barber Omer | Barber in Kenilworth — Sharp cuts, fair prices",
     template: "%s | Barber Omer",
   },
   description:
-    "Sharp cuts, fair prices and a friendly chair in the heart of Kenilworth. Call Omer on 07305 421210 or book online.",
+    "Barber in Kenilworth at 40 Common Lane. Skin fades, haircuts and beard work since 2015. Call 07305 421210 or book online.",
   openGraph,
+  ...rootMetadataExtras,
+  alternates: { canonical: "/" },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HairSalon",
-  name: business.name,
-  telephone: business.phoneTel,
-  url: siteUrl,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: business.address.line1,
-    addressLocality: business.address.city,
-    postalCode: business.address.postcode,
-    addressCountry: "GB",
-  },
-  openingHours: [
-    "Mo-We 09:00-19:00",
-    "Th-Fr 09:00-20:00",
-    "Sa 09:00-19:00",
-    "Su 10:00-18:00",
-  ],
-  image: `${siteUrl}/images/logo.png`,
-};
+const jsonLd = buildLocalBusinessJsonLd();
 
 export default function RootLayout({
   children,

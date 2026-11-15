@@ -19,7 +19,7 @@ export function ContactBoard() {
 
       <div className="mt-6 grid items-end gap-8 border-y border-ink/15 py-10 lg:grid-cols-12 lg:gap-6 lg:py-12">
         <div className="lg:col-span-5">
-          <h2 className="section-title">{business.name}</h2>
+          <h1 className="section-title">{business.name}</h1>
           <p className="mt-5 text-base leading-8 text-muted sm:text-lg">
             {business.address.line1}
             <br />

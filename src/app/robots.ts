@@ -3,7 +3,14 @@ import { siteUrl } from "@/lib/config/business";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/m/", "/booking/", "/book/confirmed"] },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/m/", "/booking/", "/book/confirmed"],
+      },
+    ],
     sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
