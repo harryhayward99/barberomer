@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { business } from "@/lib/config/business";
 import { galleryImages } from "@/lib/config/images";
+import { btnPrimaryClass, btnSecondaryClass, cn, liftShadow } from "@/lib/utils";
 
 const heroSlideSrcs = [
   "/images/cuts/cut-textured-fade.png",
@@ -29,10 +30,7 @@ export function HeroBookButton({
       href={business.bookingUrl}
       target="_blank"
       rel="noreferrer"
-      className={
-        className ||
-        "inline-flex min-h-12 items-center justify-center bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
-      }
+      className={className || cn(btnPrimaryClass, liftShadow)}
     >
       {label}
     </a>
@@ -41,13 +39,7 @@ export function HeroBookButton({
 
 export function HeroContactLink({ className = "" }: { className?: string }) {
   return (
-    <Link
-      href="/contact"
-      className={
-        className ||
-        "inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5"
-      }
-    >
+    <Link href="/contact" className={className || btnSecondaryClass}>
       Contact
     </Link>
   );

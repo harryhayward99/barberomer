@@ -16,11 +16,21 @@ export const sectionPad = sectionPadY;
 export const eyebrowClass =
   "font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted sm:text-[13px]";
 
+/**
+ * One shared lift shadow — buttons on page cream, header bar, panels.
+ * Do not use on controls sitting on light surface / header chrome.
+ */
+export const liftShadow =
+  "shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]";
+
+/** @deprecated alias — use liftShadow */
+export const btnSurfaceShadow = liftShadow;
+
 export const btnPrimaryClass =
   "inline-flex min-h-12 items-center justify-center bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep";
 
 export const btnSecondaryClass =
-  "inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5";
+  `inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5 ${liftShadow}`;
 
 export const btnInkClass =
   "inline-flex min-h-12 items-center justify-center bg-ink px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5";

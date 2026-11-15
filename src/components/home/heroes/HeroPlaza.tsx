@@ -8,7 +8,7 @@ import {
   heroSlides,
 } from "@/components/home/heroes/shared";
 import { business } from "@/lib/config/business";
-import { cn, pageStartPad, sectionPadBottom } from "@/lib/utils";
+import { cn, liftShadow, pageStartPad, sectionPadBottom } from "@/lib/utils";
 
 /** Plaza hero — large square stage + side square stack, shared carousel. */
 export function HeroPlaza() {
@@ -23,9 +23,9 @@ export function HeroPlaza() {
 
   return (
     <section
-      className={cn("relative overflow-hidden bg-cream", pageStartPad, sectionPadBottom)}
+      className={cn("relative bg-cream", pageStartPad, sectionPadBottom)}
     >
-      {/* Far-right wash + oxblood logo centred on the fade (hero only) */}
+      {/* Far-right wash + oxblood logo — under the header bar, blooms into the cream around it */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-1 right-0 z-0 h-44 w-44 sm:top-2 sm:h-52 sm:w-52"
@@ -69,7 +69,7 @@ export function HeroPlaza() {
 
           <div className="relative lg:col-span-7">
             <div className="grid grid-cols-12 items-end gap-3 sm:gap-4">
-              <div className="relative col-span-8 aspect-square overflow-hidden border border-ink/10 bg-ink/5">
+              <div className="surface-fade relative col-span-8 aspect-square overflow-hidden border border-ink/10 bg-ink/5">
                 {slides.map((image, i) => (
                   <Image
                     key={image.src}
@@ -87,7 +87,7 @@ export function HeroPlaza() {
               </div>
 
               <div className="col-span-4 flex flex-col gap-3 sm:gap-4">
-                <div className="relative aspect-square overflow-hidden border border-ink/10 bg-ink/5">
+                <div className="surface-fade relative aspect-square overflow-hidden border border-ink/10 bg-ink/5">
                   <Image
                     src={side.src}
                     alt={side.alt}
@@ -96,7 +96,7 @@ export function HeroPlaza() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex aspect-square flex-col justify-between border border-ink/10 bg-ink p-3 text-surface sm:p-4">
+                <div className="surface-fade flex aspect-square flex-col justify-between border border-ink/10 bg-ink p-3 text-surface sm:p-4">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-surface/55">
                     From the chair
                   </p>
@@ -126,7 +126,10 @@ export function HeroPlaza() {
                   type="button"
                   aria-label="Previous image"
                   onClick={() => go(-1)}
-                  className="inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface"
+                  className={cn(
+                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
+                    liftShadow,
+                  )}
                 >
                   ‹
                 </button>
@@ -134,7 +137,10 @@ export function HeroPlaza() {
                   type="button"
                   aria-label="Next image"
                   onClick={() => go(1)}
-                  className="inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface"
+                  className={cn(
+                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
+                    liftShadow,
+                  )}
                 >
                   ›
                 </button>

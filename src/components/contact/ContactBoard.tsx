@@ -4,6 +4,7 @@ import {
   btnSecondaryClass,
   cn,
   eyebrowClass,
+  liftShadow,
   pageStartPad,
   sectionPadBottom,
 } from "@/lib/utils";
@@ -42,7 +43,7 @@ export function ContactBoard() {
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className={btnPrimaryClass}
+              className={cn(btnPrimaryClass, liftShadow)}
             >
               Book online
             </a>
@@ -50,7 +51,7 @@ export function ContactBoard() {
               href={business.directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className={btnSecondaryClass}
+              className={cn(btnSecondaryClass, "shadow-none")}
             >
               Get directions
             </a>
@@ -62,7 +63,7 @@ export function ContactBoard() {
         {business.amenities.join(" · ")}
       </p>
 
-      <div className="mt-8 h-[280px] overflow-hidden border border-ink/10 lg:h-[340px]">
+      <div className="surface-fade mt-8 h-[280px] overflow-hidden border border-ink/10 lg:h-[340px]">
         <iframe
           title="Map to Barber Omer, 40 Common Lane, Kenilworth"
           src={business.mapEmbedUrl}

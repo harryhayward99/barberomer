@@ -47,7 +47,7 @@ export function ServicesList({
           return (
             <div
               key={group.id}
-              className="border border-ink/10 bg-surface"
+              className="surface-fade border border-ink/10 bg-surface"
             >
               <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
                 <h3 className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">

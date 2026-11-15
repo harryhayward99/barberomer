@@ -5,6 +5,7 @@ import {
   btnPrimaryClass,
   cn,
   eyebrowClass,
+  liftShadow,
   pageStartPad,
   sectionPadBottom,
   sectionPadY,
@@ -26,7 +27,7 @@ export function About({ pageStart = false }: { pageStart?: boolean }) {
         )}
       >
         <div className="lg:col-span-5">
-          <div className="relative aspect-square max-w-md overflow-hidden border border-ink/10 bg-ink/5">
+          <div className="surface-fade relative aspect-square max-w-md overflow-hidden border border-ink/10 bg-ink/5">
             <Image
               src={aboutImage.src}
               alt={aboutImage.alt}
@@ -61,7 +62,7 @@ export function About({ pageStart = false }: { pageStart?: boolean }) {
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className={cn(btnPrimaryClass, "mt-8")}
+              className={cn(btnPrimaryClass, liftShadow, "mt-8")}
             >
               Book now
             </a>

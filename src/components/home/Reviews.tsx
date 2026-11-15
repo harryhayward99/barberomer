@@ -8,6 +8,7 @@ import {
   btnPrimaryClass,
   cn,
   eyebrowClass,
+  liftShadow,
   pageStartPad,
   sectionPadBottom,
   sectionPadY,
@@ -54,7 +55,7 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
               href={business.googleReviewsUrl}
               target="_blank"
               rel="noreferrer"
-              className={btnPrimaryClass}
+              className={cn(btnPrimaryClass, liftShadow)}
             >
               Leave a review
             </a>
@@ -64,13 +65,13 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
 
       <InteractiveMarquee
         speed={36}
-        className="mt-10"
-        trackClassName="gap-4 px-1 pr-4"
+        className="mt-8 py-12"
+        trackClassName="gap-4 px-2 pr-4"
       >
         {reviews.map((review) => (
           <figure
             key={review.name}
-            className="w-[300px] shrink-0 border border-ink/10 bg-surface p-5 sm:w-[360px] sm:p-6"
+            className="surface-fade w-[300px] shrink-0 border border-ink/10 bg-surface p-5 sm:w-[360px] sm:p-6"
           >
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-ink/10 bg-ink text-[11px] font-medium uppercase tracking-[0.08em] text-surface">
@@ -98,7 +99,7 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
           href={business.googleReviewsUrl}
           target="_blank"
           rel="noreferrer"
-          className={btnInkClass}
+          className={cn(btnInkClass, liftShadow)}
         >
           See Google reviews
         </a>

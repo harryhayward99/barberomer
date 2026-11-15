@@ -10,7 +10,7 @@ export function BookWidget() {
           target="_blank"
           rel="noreferrer"
           aria-label="Book an appointment"
-          className="pointer-events-auto relative flex h-14 w-14 items-center justify-center border border-barber bg-surface text-barber shadow-[0_12px_28px_rgba(28,24,21,0.16)]"
+          className="pointer-events-auto relative flex h-14 w-14 items-center justify-center border border-barber bg-surface text-barber shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]"
         >
           <svg
             viewBox="0 0 24 24"

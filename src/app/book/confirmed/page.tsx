@@ -6,6 +6,7 @@ import { getStripe } from "@/lib/booking/stripe";
 import { formatFriendlyDateTime } from "@/lib/booking/time";
 import { business } from "@/lib/config/business";
 import { formatPrice } from "@/lib/config/services";
+import { btnSecondaryClass } from "@/lib/utils";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -74,7 +75,7 @@ export default async function ConfirmedPage({
         <CallButton />
         <a
           href={`/api/calendar/${booking.token}`}
-          className="inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5"
+          className={btnSecondaryClass}
         >
           Add to calendar
         </a>

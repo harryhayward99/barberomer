@@ -30,7 +30,7 @@ export default function GalleryPage() {
         {galleryImages.map((image) => (
           <div
             key={image.src}
-            className="relative aspect-square overflow-hidden border border-ink/10 bg-ink/5"
+            className="surface-fade relative aspect-square overflow-hidden border border-ink/10 bg-ink/5"
           >
             <Image
               src={image.src}

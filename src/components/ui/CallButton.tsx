@@ -1,5 +1,5 @@
 import { business, telHref } from "@/lib/config/business";
-import { btnPrimaryClass, cn } from "@/lib/utils";
+import { btnPrimaryClass, cn, liftShadow } from "@/lib/utils";
 
 type CallButtonProps = {
   className?: string;
@@ -19,6 +19,7 @@ export function CallButton({
       href={telHref()}
       className={cn(
         btnPrimaryClass,
+        liftShadow,
         compact && "min-h-11 px-4 text-[12px]",
         className,
       )}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { business, telHref } from "@/lib/config/business";
-import { cn } from "@/lib/utils";
+import { cn, liftShadow } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -15,8 +15,6 @@ const nav = [
   { href: "/reviews", label: "Reviews" },
   { href: "/contact", label: "Contact" },
 ];
-
-const headerShadow = "shadow-[0_12px_36px_rgba(28,24,21,0.12)]";
 
 export function Header() {
   const pathname = usePathname();
@@ -30,7 +28,7 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-40 bg-transparent pt-3 sm:border-b sm:border-ink/10 sm:bg-surface sm:pt-0",
-        "sm:shadow-[0_12px_36px_rgba(28,24,21,0.12)]",
+        "sm:shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]",
       )}
     >
       <div className="relative hidden justify-center bg-cream px-4 text-surface sm:block sm:overflow-hidden sm:border-b sm:border-ink/10 sm:px-0">
@@ -53,7 +51,7 @@ export function Header() {
       <div
         className={cn(
           "mx-3 mb-0 flex items-center justify-between gap-3 border border-ink/10 bg-surface px-3 py-3",
-          headerShadow,
+          liftShadow,
           "sm:mx-auto sm:h-20 sm:max-w-7xl sm:border-0 sm:bg-surface sm:px-8 sm:py-0 sm:shadow-none",
         )}
       >
@@ -165,7 +163,7 @@ export function Header() {
         <div
           className={cn(
             "mx-3 mb-3 border border-ink/10 bg-surface px-5 py-6 xl:hidden sm:mx-0 sm:mb-0 sm:border-x-0 sm:border-b-0 sm:shadow-none",
-            headerShadow,
+            liftShadow,
           )}
         >
           <nav className="flex flex-col gap-4">
