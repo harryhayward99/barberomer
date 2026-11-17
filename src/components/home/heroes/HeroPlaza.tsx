@@ -151,7 +151,7 @@ export function HeroPlaza() {
           </p>
 
           <div className="relative mt-3 w-full self-center sm:mt-4 lg:mt-4 lg:w-fit lg:self-start">
-            <h1 className="relative z-10 mx-auto w-full text-center text-[clamp(2.2rem,7vw,3.7rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.4rem,3.8vw,3.5rem)]">
+            <h1 className="relative z-10 mx-auto w-full text-center text-[clamp(calc(2.2rem-2px),7vw,calc(3.7rem-2px))] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.4rem,3.8vw,3.5rem)]">
               Modern&nbsp;
               <span className="relative inline-block">
                 <span
@@ -192,12 +192,12 @@ export function HeroPlaza() {
             and traditional grooming in Kenilworth.
           </p>
 
-          <div className="relative mt-[25px] sm:mt-[29px] lg:mt-auto lg:w-full lg:max-w-[17.5rem] lg:self-start">
-            <ul className="grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:pt-5 lg:grid-cols-2 lg:gap-0 lg:divide-x-0 lg:border-t lg:border-ink/10 lg:pt-3 lg:[&>li]:border-ink/10 lg:[&>li:nth-child(odd)]:border-r lg:[&>li:nth-child(-n+2)]:border-b">
+          <div className="relative mt-4 sm:mt-5 lg:mt-auto lg:w-full lg:max-w-[17.5rem] lg:self-start">
+            <ul className="grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-3 sm:pt-3.5 lg:grid-cols-2 lg:gap-0 lg:divide-x-0 lg:border-t lg:border-ink/10 lg:pt-3 lg:[&>li]:border-ink/10 lg:[&>li:nth-child(odd)]:border-r lg:[&>li:nth-child(-n+2)]:border-b">
               {features.map((feature) => (
                 <li
                   key={feature.key}
-                  className="flex flex-col items-center gap-1.5 px-1.5 text-center sm:gap-2.5 sm:px-3 lg:gap-1.5 lg:px-3 lg:py-2.5"
+                  className="flex flex-col items-center gap-1 px-1.5 text-center sm:gap-1.5 sm:px-3 lg:gap-1.5 lg:px-3 lg:py-2.5"
                 >
                   <span className="text-ink">{feature.icon}</span>
                   <span className="text-[9px] font-medium uppercase leading-snug tracking-[0.1em] text-ink sm:text-[11px] sm:tracking-[0.12em] lg:text-[9px] lg:tracking-[0.1em] xl:text-[10px]">
@@ -209,7 +209,7 @@ export function HeroPlaza() {
           </div>
         </div>
 
-        <div className="mt-5 w-full sm:mt-7 lg:mt-0">
+        <div className="mt-3 w-full sm:mt-4 lg:mt-0">
           <div className="grid grid-cols-12 items-end gap-3 sm:gap-4 lg:max-h-[min(58svh,30rem)]">
             <button
               type="button"
