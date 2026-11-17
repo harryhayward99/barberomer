@@ -38,20 +38,20 @@ export function Header() {
       </div>
       <div className="hidden h-px bg-surface/20 sm:block" aria-hidden />
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:h-[4.75rem] sm:px-8 sm:py-0">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-3 sm:h-[4.75rem] sm:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-surface/20 bg-surface/5">
+          <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden sm:h-[3.5rem] sm:w-[3.5rem]">
             <Image
-              src="/images/logo.png"
+              src="/images/logo-header-white.png"
               alt="Barber Omer Kenilworth"
-              width={40}
-              height={40}
+              width={56}
+              height={56}
               className="h-full w-full object-contain"
               priority
             />
           </span>
           <span className="flex flex-col gap-0.5">
-            <span className="font-heading text-[16px] leading-none tracking-[0.01em] text-surface sm:text-[18px]">
+            <span className="font-heading text-[16px] uppercase leading-none tracking-[0.04em] text-surface sm:text-[18px]">
               Barber Omer
             </span>
             <span className="text-[10px] font-medium uppercase leading-none tracking-[0.18em] text-surface/55 sm:text-[11px]">
