@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body className="min-h-screen bg-cream pb-[calc(4.75rem+env(safe-area-inset-bottom))] text-ink antialiased sm:pb-0">
+      <body className="min-h-screen bg-cream pb-[calc(4rem+env(safe-area-inset-bottom))] text-ink antialiased sm:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

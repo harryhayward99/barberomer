@@ -11,23 +11,23 @@ export function BookWidget() {
       >
         <div
           className={cn(
-            "pointer-events-auto rounded-t border-t border-ink/10 bg-surface/95 px-4 py-3 backdrop-blur-sm",
+            "pointer-events-auto rounded-t border-t border-ink/10 bg-surface/95 px-3 py-2.5 backdrop-blur-sm",
             liftShadow,
           )}
         >
-          <div className="mx-auto grid max-w-lg grid-cols-2 gap-3">
+          <div className="mx-auto grid max-w-lg grid-cols-2 gap-2.5">
             <a
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-barber px-4 text-[12px] font-medium uppercase tracking-[0.16em] text-surface transition-colors hover:bg-barber-deep"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm bg-barber px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface transition-colors hover:bg-barber-deep"
             >
               <CalendarIcon />
               Book
             </a>
             <a
               href={telHref()}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-ink bg-surface px-4 text-[12px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:bg-ink hover:text-surface"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm border border-ink bg-surface px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:bg-ink hover:text-surface"
             >
               <PhoneIcon />
               Call

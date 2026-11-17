@@ -151,7 +151,7 @@ export function HeroPlaza() {
           </p>
 
           <div className="relative mt-3 w-full self-center sm:mt-4 lg:mt-4 lg:w-fit lg:self-start">
-            <h1 className="mx-auto w-full text-center text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
+            <h1 className="mx-auto w-full text-center text-[clamp(2.2rem,7vw,3.7rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.4rem,3.8vw,3.5rem)]">
               Modern&nbsp;Turkish
               <br className="lg:hidden" />
               {" "}
@@ -170,7 +170,7 @@ export function HeroPlaza() {
             and traditional grooming in Kenilworth.
           </p>
 
-          <ul className="mt-10 grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-5 sm:mt-12 sm:pt-7 lg:mt-10 lg:pt-6">
+          <ul className="mt-7 grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:mt-8 sm:pt-5 lg:mt-8 lg:pt-5">
             {features.map((feature) => (
               <li
                 key={feature.key}

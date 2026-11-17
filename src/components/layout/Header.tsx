@@ -50,27 +50,27 @@ export function Header() {
 
       <div
         className={cn(
-          "mx-3 mb-0 flex items-center justify-between gap-3 rounded border border-ink/10 bg-surface px-3 py-3",
+          "mx-3 mb-0 flex items-center justify-between gap-2.5 rounded border border-ink/10 bg-surface px-2.5 py-2.5",
           liftShadow,
-          "sm:mx-auto sm:h-20 sm:max-w-7xl sm:rounded-none sm:border-0 sm:bg-surface sm:px-8 sm:py-0 sm:shadow-none",
+          "sm:mx-auto sm:h-[4.5rem] sm:max-w-7xl sm:rounded-none sm:border-0 sm:bg-surface sm:px-8 sm:py-0 sm:shadow-none",
         )}
       >
-        <Link href="/" className="flex shrink-0 items-center gap-3">
-          <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-ink/10 bg-surface sm:h-11 sm:w-11">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-ink/10 bg-surface sm:h-10 sm:w-10">
             <Image
               src="/images/logo.png"
               alt="Barber Omer Kenilworth"
-              width={44}
-              height={44}
+              width={40}
+              height={40}
               className="h-full w-full object-contain"
               priority
             />
           </span>
-          <span className="flex flex-col gap-1">
-            <span className="font-heading text-[18px] leading-none tracking-[0.01em] sm:text-[19px]">
+          <span className="flex flex-col gap-0.5">
+            <span className="font-heading text-[16px] leading-none tracking-[0.01em] sm:text-[17px]">
               Barber Omer
             </span>
-            <span className="text-[11px] font-medium uppercase leading-none tracking-[0.18em] text-muted sm:text-[12px]">
+            <span className="text-[10px] font-medium uppercase leading-none tracking-[0.18em] text-muted sm:text-[11px]">
               Kenilworth
             </span>
           </span>
@@ -96,14 +96,14 @@ export function Header() {
             href={business.bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="hidden min-[370px]:inline-flex h-11 items-center justify-center rounded-sm bg-barber px-5 text-[12px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep sm:h-11"
+            className="hidden min-[370px]:inline-flex h-9 items-center justify-center rounded-sm bg-barber px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep sm:h-10 sm:px-5 sm:text-[12px]"
           >
             Book
           </a>
           <button
             type="button"
             className={cn(
-              "inline-flex h-11 w-11 items-center justify-center rounded-sm border border-ink/15 bg-surface text-ink transition-colors duration-300 xl:hidden",
+              "inline-flex h-9 w-9 items-center justify-center rounded-sm border border-ink/15 bg-surface text-ink transition-colors duration-300 sm:h-10 sm:w-10 xl:hidden",
               open && "border-ink bg-ink text-surface",
             )}
             aria-expanded={open}
