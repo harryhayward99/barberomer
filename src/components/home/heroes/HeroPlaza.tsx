@@ -283,16 +283,22 @@ export function HeroPlaza() {
               </div>
             </div>
           </div>
-          <p className="mt-3 text-center text-[13px] leading-5 text-muted sm:mt-4 sm:text-[14px] sm:leading-6 lg:text-left">
+          <p className="mt-4 flex justify-center sm:mt-5 lg:justify-start">
             <a
               href={business.googleReviewsUrl}
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-ink/25 underline-offset-[5px] transition-colors hover:text-ink hover:decoration-ink/50"
+              className="group inline-flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink sm:text-[12px] sm:tracking-[0.18em] lg:justify-start"
             >
-              {business.googleReviewCount >= 100
-                ? "120+ five-star Google reviews"
-                : `${business.googleReviewCount} five-star Google reviews`}
+              <span className="text-barber tracking-[0.08em]" aria-hidden>
+                ★★★★★
+              </span>
+              <span className="underline decoration-ink/20 underline-offset-[6px] transition-[text-decoration-color] group-hover:decoration-ink/45">
+                {business.rating} ·{" "}
+                {business.googleReviewCount >= 100
+                  ? "120+ five-star Google reviews"
+                  : `${business.googleReviewCount} five-star Google reviews`}
+              </span>
             </a>
           </p>
         </div>
