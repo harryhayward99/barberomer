@@ -14,7 +14,7 @@ const ogImage = {
 export const openGraph = {
   title: "Barber Omer | Barber in Kenilworth",
   description:
-    "Modern barbering at 40 Common Lane, Kenilworth. Skin fades, haircuts and beard work since 2015 — fair prices, friendly chair.",
+    "Modern Turkish barbering at 40 Common Lane, Kenilworth. Skin fades, haircuts and beard work since 2015 — fair prices, friendly chair.",
   locale: "en_GB",
   type: "website" as const,
   siteName: business.name,
@@ -54,12 +54,26 @@ function priceRange() {
   return `£${min.toFixed(0)}-£${max.toFixed(0)}`;
 }
 
+function aggregateRating() {
+  const average =
+    reviews.reduce((sum, review) => sum + review.stars, 0) / reviews.length;
+  return {
+    "@type": "AggregateRating" as const,
+    ratingValue: Number(average.toFixed(1)),
+    bestRating: 5,
+    worstRating: 1,
+    ratingCount: reviews.length,
+    reviewCount: reviews.length,
+  };
+}
+
 export function buildLocalBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "HairSalon",
+    "@type": ["HairSalon", "LocalBusiness"],
     "@id": `${siteUrl}/#salon`,
     name: business.name,
+    alternateName: ["Barber Omer Kenilworth", "Turkish Hair Master Kenilworth"],
     description: openGraph.description,
     url: siteUrl,
     telephone: business.phoneTel,
@@ -69,14 +83,21 @@ export function buildLocalBusinessJsonLd() {
       `${siteUrl}/images/omer-doorway.jpg`,
       `${siteUrl}/images/logo.png`,
     ],
-    logo: `${siteUrl}/images/logo.png`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/images/logo.png`,
+      contentUrl: `${siteUrl}/favicon.png`,
+      caption: "Barber Omer logo",
+    },
     priceRange: priceRange(),
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Credit Card, Debit Card",
+    foundingDate: String(business.established),
     address: {
       "@type": "PostalAddress",
       streetAddress: business.address.line1,
       addressLocality: business.address.city,
+      addressRegion: "Warwickshire",
       postalCode: business.address.postcode,
       addressCountry: "GB",
     },
@@ -88,6 +109,8 @@ export function buildLocalBusinessJsonLd() {
     hasMap: business.directionsUrl,
     areaServed: [
       { "@type": "City", name: "Kenilworth" },
+      { "@type": "City", name: "Leamington Spa" },
+      { "@type": "City", name: "Warwick" },
       { "@type": "AdministrativeArea", name: "Warwickshire" },
     ],
     openingHours: openingHoursStrings(),
@@ -97,6 +120,22 @@ export function buildLocalBusinessJsonLd() {
       "@type": "LocationFeatureSpecification",
       name,
       value: true,
+    })),
+    aggregateRating: aggregateRating(),
+    makesOffer: services.map((service) => ({
+      "@type": "Offer",
+      name: service.name,
+      price: (service.pricePence / 100).toFixed(2),
+      priceCurrency: "GBP",
+      url: `${siteUrl}/services`,
+      availability: "https://schema.org/InStock",
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        provider: { "@id": `${siteUrl}/#salon` },
+        areaServed: business.address.city,
+      },
     })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -114,6 +153,57 @@ export function buildLocalBusinessJsonLd() {
         url: `${siteUrl}/services`,
       })),
     },
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/book`,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      result: {
+        "@type": "Reservation",
+        name: "Haircut appointment",
+      },
+    },
+  };
+}
+
+export function buildWebsiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: business.name,
+    url: siteUrl,
+    description: openGraph.description,
+    publisher: { "@id": `${siteUrl}/#salon` },
+    inLanguage: "en-GB",
+  };
+}
+
+export function buildBreadcrumbJsonLd(
+  items: { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      ...items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: item.name,
+        item: `${siteUrl}${item.path}`,
+      })),
+    ],
   };
 }
 
@@ -135,22 +225,12 @@ export function buildFaqJsonLd(
 }
 
 export function buildReviewsJsonLd() {
-  const average =
-    reviews.reduce((sum, review) => sum + review.stars, 0) / reviews.length;
-
   return {
     "@context": "https://schema.org",
     "@type": "HairSalon",
     "@id": `${siteUrl}/#salon`,
     name: business.name,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: Number(average.toFixed(1)),
-      bestRating: 5,
-      worstRating: 1,
-      ratingCount: reviews.length,
-      reviewCount: reviews.length,
-    },
+    aggregateRating: aggregateRating(),
     review: reviews.map((review) => ({
       "@type": "Review",
       author: { "@type": "Person", name: review.name },
@@ -228,25 +308,69 @@ export function pageMetadata({
       description,
       images: [images[0]?.url ?? ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
   };
 }
 
 export const rootMetadataExtras: Pick<
   Metadata,
-  "keywords" | "authors" | "creator" | "publisher" | "twitter" | "category"
+  | "keywords"
+  | "authors"
+  | "creator"
+  | "publisher"
+  | "twitter"
+  | "category"
+  | "applicationName"
+  | "referrer"
+  | "formatDetection"
+  | "icons"
+  | "other"
 > = {
+  applicationName: business.name,
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    telephone: true,
+    email: false,
+    address: true,
+  },
   keywords: [
     "barber Kenilworth",
     "haircut Kenilworth",
     "skin fade Kenilworth",
+    "Turkish barber Kenilworth",
     "barber Common Lane",
-    "Beard trim Kenilworth",
+    "beard trim Kenilworth",
+    "hot towel shave Kenilworth",
+    "men's haircut Kenilworth",
+    "kids haircut Kenilworth",
     "Barber Omer",
+    "barber Warwickshire",
+    "book barber Kenilworth",
   ],
   authors: [{ name: business.name, url: siteUrl }],
   creator: business.name,
   publisher: business.name,
   category: "Barber shop",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  other: {
+    "geo.region": "GB-WAR",
+    "geo.placename": "Kenilworth",
+    "geo.position": "52.35378;-1.56068",
+    ICBM: "52.35378, -1.56068",
+  },
   twitter: {
     card: "summary_large_image",
     title: openGraph.title,

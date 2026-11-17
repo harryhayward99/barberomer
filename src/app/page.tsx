@@ -8,9 +8,9 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: "Barber Omer | Modern Turkish barbering in Kenilworth",
+  title: "Barber Omer | Barber in Kenilworth — Skin Fades & Cuts",
   description:
-    "Modern Turkish barbering on Common Lane, Kenilworth. Precision haircuts, skin fades and traditional grooming. Call 07305 421210 or book online.",
+    "Turkish barber on Common Lane, Kenilworth. Precision haircuts, skin fades, beard trims and hot towel shaves from £10. Call 07305 421210 or book online.",
 });
 
 export default function HomePage() {

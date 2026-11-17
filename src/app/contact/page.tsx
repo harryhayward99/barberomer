@@ -1,4 +1,5 @@
 import {
+  buildBreadcrumbJsonLd,
   buildFaqJsonLd,
   contactFaqs,
   pageMetadata,
@@ -11,12 +12,15 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = pageMetadata({
   path: "/contact",
-  title: "Contact & directions",
+  title: "Contact & directions — Common Lane",
   description:
-    "Visit Barber Omer at 40 Common Lane, Kenilworth CV8 2EQ. Call 07305 421210, get directions, or book online any time.",
+    "Visit Barber Omer at 40 Common Lane, Kenilworth CV8 2EQ. Call 07305 421210, get directions, or book a haircut online any time.",
 });
 
 const faqJsonLd = buildFaqJsonLd([...contactFaqs]);
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Contact", path: "/contact" },
+]);
 
 export default function ContactPage() {
   return (
@@ -24,6 +28,10 @@ export default function ContactPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <ContactBoard />
       <SectionDivider />

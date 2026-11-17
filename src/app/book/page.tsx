@@ -1,14 +1,18 @@
-import { pageMetadata } from "@/lib/config/seo";
+import { buildBreadcrumbJsonLd, pageMetadata } from "@/lib/config/seo";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { BookingWizard } from "@/components/booking/BookingWizard";
 
 export const metadata: Metadata = pageMetadata({
   path: "/book",
-  title: "Book online",
+  title: "Book a haircut in Kenilworth",
   description:
-    "Book a haircut with Barber Omer in Kenilworth. Choose a service, pick a time and pay a 25% deposit online.",
+    "Book a haircut, skin fade or beard trim with Barber Omer in Kenilworth. Choose a service, pick a time and pay a 25% deposit online.",
 });
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Book", path: "/book" },
+]);
 
 function BookInner({
   searchParams,
@@ -17,6 +21,10 @@ function BookInner({
 }) {
   return (
     <section className="mx-auto max-w-7xl px-5 sm:px-8 pt-8 sm:pt-10 lg:pt-12 pb-16 sm:pb-20 lg:pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {searchParams.cancelled && (
         <p className="mb-8 rounded-2xl border border-line px-4 py-3 text-sm">
           Payment was cancelled. That time has not been held. You can try again

@@ -1,5 +1,6 @@
 import {
   buildLocalBusinessJsonLd,
+  buildWebsiteJsonLd,
   openGraph,
   rootMetadataExtras,
 } from "@/lib/config/seo";
@@ -16,22 +17,38 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F5F0E8" },
+    { media: "(prefers-color-scheme: dark)", color: "#F5F0E8" },
+  ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Barber Omer | Modern Turkish barbering in Kenilworth",
-    template: "%s | Barber Omer",
+    default: "Barber Omer | Barber in Kenilworth — Skin Fades & Cuts",
+    template: "%s | Barber Omer Kenilworth",
   },
   description:
-    "Modern Turkish barbering at 40 Common Lane, Kenilworth. Precision haircuts, skin fades and traditional grooming. Call 07305 421210 or book online.",
+    "Turkish barber on Common Lane, Kenilworth. Precision haircuts, skin fades, beard trims and hot towel shaves. Call 07305 421210 or book online.",
   openGraph,
   ...rootMetadataExtras,
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
-const jsonLd = buildLocalBusinessJsonLd();
+const salonJsonLd = buildLocalBusinessJsonLd();
+const websiteJsonLd = buildWebsiteJsonLd();
 
 export default function RootLayout({
   children,
@@ -43,7 +60,11 @@ export default function RootLayout({
       <body className="min-h-screen bg-cream pb-[calc(4rem+env(safe-area-inset-bottom))] text-ink antialiased sm:pb-0">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(salonJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <Header />
         <main>{children}</main>
