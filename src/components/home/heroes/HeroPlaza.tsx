@@ -2,16 +2,116 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import {
-  HeroBookButton,
-  HeroContactLink,
-  heroSlides,
-} from "@/components/home/heroes/shared";
+import { heroSlides } from "@/components/home/heroes/shared";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { business } from "@/lib/config/business";
-import { cn, liftShadow, pageStartPad, sectionPadBottom } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
-/** Plaza hero — large square stage + side square stack, shared carousel. */
+const features = [
+  {
+    key: "precision-haircuts",
+    label: (
+      <>
+        Precision
+        <br />
+        haircuts
+      </>
+    ),
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+        <circle cx="6.5" cy="6.5" r="2.25" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="6.5" cy="17.5" r="2.25" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M8.4 8.1 19 17.5M8.4 15.9 19 6.5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+        />
+      </svg>
+    ),
+  },
+  {
+    key: "skin-fades",
+    label: (
+      <>
+        Skin
+        <br />
+        fades
+      </>
+    ),
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+        <path
+          d="M4.5 19.5 14 10l2.2 2.2-9.5 9.5H4.5v-2.2Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="miter"
+        />
+        <path
+          d="M14 10c1.2-1.8 3.4-3.4 5.6-3.8.4 1.8-.2 3.6-1.6 5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+        />
+        <path
+          d="M13.2 10.8 15.4 13"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+        />
+      </svg>
+    ),
+  },
+  {
+    key: "beard-work",
+    label: (
+      <>
+        Beard
+        <br />
+        work
+      </>
+    ),
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+        <path
+          d="M7.5 9.5c0-2.4 2-4.3 4.5-4.3s4.5 1.9 4.5 4.3"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M5.8 11.2c.4 4.6 2.8 7.8 6.2 7.8s5.8-3.2 6.2-7.8"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="miter"
+        />
+        <path d="M9.2 12.2h5.6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+      </svg>
+    ),
+  },
+  {
+    key: "premium-experience",
+    label: (
+      <>
+        Premium
+        <br />
+        experience
+      </>
+    ),
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+        <path
+          d="M12 3.5 13.4 9h5.6l-4.5 3.4 1.7 5.6L12 14.8l-4.2 3.2 1.7-5.6L5 9h5.6L12 3.5Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="miter"
+        />
+      </svg>
+    ),
+  },
+];
+
+/** Split hero on large screens: copy + features left, collage right. */
 export function HeroPlaza() {
   const slides = heroSlides;
   const [index, setIndex] = useState(0);
@@ -29,138 +129,139 @@ export function HeroPlaza() {
 
   return (
     <section
-      className={cn("relative bg-cream", pageStartPad, sectionPadBottom)}
+      className={cn(
+        "relative overflow-x-clip bg-cream pt-8 pb-10 sm:pt-10 sm:pb-12",
+        "lg:flex lg:h-[calc(100svh-7.25rem)] lg:flex-col lg:justify-center lg:overflow-hidden lg:py-5",
+      )}
     >
+      {/* Mobile / tablet wash */}
       <div
         aria-hidden
-        className={cn(
-          "pointer-events-none absolute z-0 h-44 w-44 sm:h-52 sm:w-52 lg:h-64 lg:w-64",
-          "top-1 right-0 translate-x-[calc(50%-50px)] -translate-y-[30px] sm:top-2",
-          "lg:top-[34%] lg:left-[35%] lg:right-auto lg:translate-x-[-50%] lg:translate-y-[-50%]",
-        )}
+        className="pointer-events-none absolute -right-6 -top-16 z-0 h-44 w-44 translate-x-[25px] translate-y-[15px] sm:right-auto sm:left-1/2 sm:top-[14%] sm:h-64 sm:w-64 sm:translate-x-[-8%] sm:translate-y-[-50%] lg:hidden"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--red) 42%, transparent) 0%, color-mix(in srgb, var(--red) 16%, transparent) 46%, transparent 72%)",
-          }}
-        />
-        <Image
-          src="/images/logo-oxblood.png"
-          alt=""
-          width={160}
-          height={160}
-          className="absolute left-1/2 top-1/2 h-[40%] w-[40%] -translate-x-1/2 -translate-y-1/2 rotate-[35deg] object-contain opacity-55"
-        />
+        <HeroWashMark />
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="relative lg:col-span-5">
-            <p className="font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted sm:text-[13px]">
-              Kenilworth · Since {business.established}
+
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 sm:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 xl:gap-14">
+        <div className="flex flex-col text-center lg:text-left">
+          <p className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-muted sm:gap-4 sm:text-[12px] lg:justify-start">
+            <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
+            Kenilworth · Since {business.established}
+            <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
+          </p>
+
+          <h1 className="mx-auto mt-5 max-w-[16ch] text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-6 lg:mx-0 lg:mt-5 lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
+            Modern Turkish barbering
+          </h1>
+
+          <div className="relative mt-5 inline-block self-center sm:mt-6 lg:mt-5 lg:self-start">
+            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-barber sm:text-[13px] sm:tracking-[0.2em]">
+              Expert cuts. Exceptional service.
             </p>
-            <h1 className="mt-4 max-w-md text-[clamp(2.5rem,7vw,4.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.04em]">
-              Sharp cuts.
-              <br />
-              Fair prices.
-            </h1>
-            <p className="mt-5 max-w-sm text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              Omer&apos;s been cutting hair on Common Lane since{" "}
-              {business.established} — calm, careful, and properly welcoming.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <HeroBookButton />
-              <HeroContactLink />
+            {/* Desktop: 100px past the tagline’s right edge */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 left-[calc(100%+140px)] z-0 hidden h-56 w-56 -translate-y-1/2 lg:block"
+            >
+              <HeroWashMark />
             </div>
           </div>
 
-          <div className="relative lg:col-span-7">
-            <div className="grid grid-cols-12 items-end gap-3 sm:gap-4">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8 lg:mx-0 lg:mt-5 lg:max-w-md lg:text-base lg:leading-7">
+            Experience the art of Turkish barbering. Precision haircuts, skin fades
+            and traditional grooming in Kenilworth.
+          </p>
+
+          <ul className="mt-10 grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-5 sm:mt-12 sm:pt-7 lg:mt-10 lg:pt-6">
+            {features.map((feature) => (
+              <li
+                key={feature.key}
+                className="flex flex-col items-center gap-1.5 px-1.5 text-center sm:gap-2.5 sm:px-3 lg:items-start lg:px-2 lg:text-left xl:px-3"
+              >
+                <span className="text-ink">{feature.icon}</span>
+                <span className="text-[9px] font-medium uppercase leading-snug tracking-[0.1em] text-ink sm:text-[11px] sm:tracking-[0.12em] lg:text-[10px] xl:text-[11px]">
+                  {feature.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-5 w-full sm:mt-7 lg:mt-0">
+          <div className="grid grid-cols-12 items-end gap-3 sm:gap-4 lg:max-h-[min(58svh,30rem)]">
+            <button
+              type="button"
+              aria-label={`View ${slides[index]?.alt ?? "cut"} larger`}
+              onClick={() => openAt(index)}
+              className="surface-fade relative col-span-8 aspect-square max-h-full cursor-zoom-in overflow-hidden rounded border border-ink/10 bg-ink/5 text-left lg:aspect-auto lg:h-[min(58svh,30rem)]"
+            >
+              {slides.map((image, i) => (
+                <Image
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority={i === 0}
+                  sizes="(max-width: 1024px) 70vw, 35vw"
+                  className={cn(
+                    "object-cover transition-opacity duration-500",
+                    i === index ? "opacity-100" : "opacity-0",
+                  )}
+                />
+              ))}
+            </button>
+
+            <div className="col-span-4 flex flex-col gap-3 sm:gap-4 lg:h-[min(58svh,30rem)]">
               <button
                 type="button"
-                aria-label={`View ${slides[index]?.alt ?? "cut"} larger`}
-                onClick={() => openAt(index)}
-                className="surface-fade relative col-span-8 aspect-square cursor-zoom-in overflow-hidden border border-ink/10 bg-ink/5 text-left"
+                aria-label={`View ${side.alt} larger`}
+                onClick={() => openAt((index + 1) % slides.length)}
+                className="surface-fade relative aspect-square cursor-zoom-in overflow-hidden rounded border border-ink/10 bg-ink/5 text-left lg:min-h-0 lg:flex-1 lg:aspect-auto"
               >
-                {slides.map((image, i) => (
-                  <Image
-                    key={image.src}
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    priority={i === 0}
-                    sizes="(max-width: 1024px) 70vw, 40vw"
-                    className={cn(
-                      "object-cover transition-opacity duration-500",
-                      i === index ? "opacity-100" : "opacity-0",
-                    )}
-                  />
-                ))}
+                <Image
+                  src={side.src}
+                  alt={side.alt}
+                  fill
+                  sizes="(max-width: 1024px) 25vw, 15vw"
+                  className="object-cover"
+                />
               </button>
-
-              <div className="col-span-4 flex flex-col gap-3 sm:gap-4">
-                <button
-                  type="button"
-                  aria-label={`View ${side.alt} larger`}
-                  onClick={() => openAt((index + 1) % slides.length)}
-                  className="surface-fade relative aspect-square cursor-zoom-in overflow-hidden border border-ink/10 bg-ink/5 text-left"
-                >
-                  <Image
-                    src={side.src}
-                    alt={side.alt}
-                    fill
-                    sizes="25vw"
-                    className="object-cover"
-                  />
-                </button>
-                <div className="surface-fade flex aspect-square flex-col justify-between border border-ink/10 bg-ink p-3 text-surface sm:p-4">
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-surface/55">
-                    From the chair
-                  </p>
-                  <p className="font-heading text-2xl leading-none sm:text-3xl">
+              <div className="surface-fade relative flex aspect-square flex-col overflow-hidden rounded border border-ink/10 bg-ink text-surface lg:min-h-0 lg:flex-1 lg:aspect-auto">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-6 -top-8 h-24 w-24 rounded-full opacity-40"
+                  style={{
+                    background:
+                      "radial-gradient(circle, color-mix(in srgb, var(--red) 55%, transparent) 0%, transparent 70%)",
+                  }}
+                />
+                <div className="relative flex flex-1 flex-col items-center justify-center px-3 pt-3 sm:px-4 sm:pt-4">
+                  <p className="font-heading text-[clamp(2rem,6vw,2.75rem)] leading-none tracking-wide">
                     {String(index + 1).padStart(2, "0")}
-                    <span className="text-surface/35">
-                      /{String(slides.length).padStart(2, "0")}
-                    </span>
+                  </p>
+                  <span className="mt-2 h-px w-8 bg-barber" aria-hidden />
+                  <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.2em] text-surface/45 sm:text-[11px]">
+                    of {String(slides.length).padStart(2, "0")}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            <div className="mt-5 flex items-center justify-end gap-4 sm:justify-between">
-              <div className="hidden items-center gap-3 text-[12px] uppercase tracking-[0.2em] text-muted sm:flex">
-                <span className="tabular-nums text-ink">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="h-px w-10 bg-ink/25 sm:w-16" aria-hidden />
-                <span className="tabular-nums">
-                  {String(slides.length).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  aria-label="Previous image"
-                  onClick={() => go(-1)}
-                  className={cn(
-                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
-                    liftShadow,
-                  )}
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next image"
-                  onClick={() => go(1)}
-                  className={cn(
-                    "inline-flex h-10 w-10 items-center justify-center border border-ink/20 bg-surface text-ink transition-colors hover:bg-ink hover:text-surface",
-                    liftShadow,
-                  )}
-                >
-                  ›
-                </button>
+                <div className="relative grid grid-cols-2 border-t border-surface/15">
+                  <button
+                    type="button"
+                    aria-label="Previous image"
+                    onClick={() => go(-1)}
+                    className="inline-flex h-10 items-center justify-center bg-surface/10 text-lg leading-none text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next image"
+                    onClick={() => go(1)}
+                    className="inline-flex h-10 items-center justify-center border-l border-surface/15 bg-surface/10 text-lg leading-none text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                  >
+                    ›
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -176,5 +277,34 @@ export function HeroPlaza() {
         />
       ) : null}
     </section>
+  );
+}
+
+function HeroWashMark() {
+  return (
+    <>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--red) 42%, transparent) 0%, color-mix(in srgb, var(--red) 16%, transparent) 46%, transparent 72%)",
+        }}
+      />
+      <span
+        aria-hidden
+        className="absolute left-1/2 top-1/2 h-[38%] w-[38%] -translate-x-1/2 -translate-y-1/2 rotate-[28deg]"
+        style={{
+          backgroundColor: "var(--cream)",
+          WebkitMaskImage: "url(/images/logo-oxblood.png)",
+          maskImage: "url(/images/logo-oxblood.png)",
+          WebkitMaskSize: "contain",
+          maskSize: "contain",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+        }}
+      />
+    </>
   );
 }

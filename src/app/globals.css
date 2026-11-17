@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,500;0,600;0,700;1,500&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -19,7 +20,7 @@
   --color-barber-deep: #521010;
   --color-muted: #6a6359;
   --color-line: rgba(28, 24, 21, 0.12);
-  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Libre Bodoni", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --radius-xl: 1.5rem;
 }
@@ -37,24 +38,41 @@ body {
   background: var(--cream);
   color: var(--black);
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
   max-width: 100%;
 }
 
+/* Title type — Libre Bodoni (editorial Italian Didone) */
 h1,
 h2,
 h3,
-h4,
+.section-title,
 .font-heading {
-  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Libre Bodoni", ui-serif, Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+  font-optical-sizing: auto;
+}
+
+h4 {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
 .section-title {
-  font-size: clamp(2.25rem, 6vw, 3.75rem);
-  line-height: 0.95;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+}
+
+p {
+  letter-spacing: 0.005em;
 }
 
 .surface-fade {

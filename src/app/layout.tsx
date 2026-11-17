@@ -10,7 +10,6 @@ import { BookWidget } from "@/components/ui/BookWidget";
 import { siteUrl } from "@/lib/config/business";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
-import "@fontsource/sora/600.css";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -22,11 +21,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Barber Omer | Barber in Kenilworth — Sharp cuts, fair prices",
+    default: "Barber Omer | Modern Turkish barbering in Kenilworth",
     template: "%s | Barber Omer",
   },
   description:
-    "Barber in Kenilworth at 40 Common Lane. Skin fades, haircuts and beard work since 2015. Call 07305 421210 or book online.",
+    "Modern Turkish barbering at 40 Common Lane, Kenilworth. Precision haircuts, skin fades and traditional grooming. Call 07305 421210 or book online.",
   openGraph,
   ...rootMetadataExtras,
   alternates: { canonical: "/" },
@@ -41,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body className="min-h-screen bg-cream text-ink antialiased">
+      <body className="min-h-screen bg-cream pb-[calc(4.75rem+env(safe-area-inset-bottom))] text-ink antialiased sm:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

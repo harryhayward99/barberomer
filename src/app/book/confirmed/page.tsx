@@ -49,10 +49,10 @@ export default async function ConfirmedPage({
 
   return (
     <section className="mx-auto max-w-3xl px-5 sm:px-8 pt-8 sm:pt-10 lg:pt-12 pb-16 sm:pb-20 lg:pb-24">
-      <p className="font-heading text-[12px] font-medium uppercase tracking-[0.22em] text-muted">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-muted">
         Confirmed
       </p>
-      <h1 className="mt-4 font-heading text-5xl leading-none tracking-tight sm:text-7xl">
+      <h1 className="mt-4 text-5xl sm:text-7xl">
         You&apos;re booked.
       </h1>
       <p className="mt-8 text-2xl">{booking.serviceName}</p>
