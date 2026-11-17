@@ -233,21 +233,21 @@ export function HeroPlaza() {
                       "radial-gradient(circle, color-mix(in srgb, var(--red) 55%, transparent) 0%, transparent 70%)",
                   }}
                 />
-                <div className="relative flex flex-1 flex-col items-center justify-center px-3 pt-3 sm:px-4 sm:pt-4">
-                  <p className="font-heading text-[clamp(2rem,6vw,2.75rem)] leading-none tracking-wide">
+                <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-2 pt-2 sm:px-4 sm:pt-4">
+                  <p className="font-heading text-[clamp(1.35rem,4.5vw,2.75rem)] leading-none tracking-wide">
                     {String(index + 1).padStart(2, "0")}
                   </p>
-                  <span className="mt-2 h-px w-8 bg-barber" aria-hidden />
-                  <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.2em] text-surface/45 sm:text-[11px]">
+                  <span className="mt-1.5 h-px w-6 bg-barber sm:mt-2 sm:w-8" aria-hidden />
+                  <p className="mt-1.5 text-[9px] font-medium uppercase tracking-[0.2em] text-surface/45 sm:mt-2 sm:text-[11px]">
                     of {String(slides.length).padStart(2, "0")}
                   </p>
                 </div>
-                <div className="relative grid grid-cols-2 border-t border-surface/15">
+                <div className="relative grid shrink-0 grid-cols-2 border-t border-surface/15">
                   <button
                     type="button"
                     aria-label="Previous image"
                     onClick={() => go(-1)}
-                    className="inline-flex h-10 items-center justify-center bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                    className="inline-flex h-9 items-center justify-center bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
                   >
                     <svg
                       viewBox="0 0 16 16"
@@ -265,7 +265,7 @@ export function HeroPlaza() {
                     type="button"
                     aria-label="Next image"
                     onClick={() => go(1)}
-                    className="inline-flex h-10 items-center justify-center border-l border-surface/15 bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                    className="inline-flex h-9 items-center justify-center border-l border-surface/15 bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
                   >
                     <svg
                       viewBox="0 0 16 16"
