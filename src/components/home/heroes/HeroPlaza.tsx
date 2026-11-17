@@ -150,18 +150,13 @@ export function HeroPlaza() {
             <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
           </p>
 
-          <h1 className="mx-auto mt-3 w-full text-center text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-4 lg:mx-0 lg:mt-4 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
-            Modern&nbsp;Turkish
-            <br className="lg:hidden" />
-            {" "}
-            barbering
-          </h1>
-
-          <div className="relative mt-3 inline-block self-center sm:mt-4 lg:mt-4 lg:self-start">
-            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-barber sm:text-[13px] sm:tracking-[0.2em]">
-              Expert cuts. Exceptional service.
-            </p>
-            {/* Desktop: 100px past the tagline’s right edge */}
+          <div className="relative mt-3 w-full self-center sm:mt-4 lg:mt-4 lg:w-fit lg:self-start">
+            <h1 className="mx-auto w-full text-center text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
+              Modern&nbsp;Turkish
+              <br className="lg:hidden" />
+              {" "}
+              barbering
+            </h1>
             <div
               aria-hidden
               className="pointer-events-none absolute top-1/2 left-[calc(100%+140px)] z-0 hidden h-56 w-56 -translate-y-1/2 lg:block"
