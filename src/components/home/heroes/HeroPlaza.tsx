@@ -130,7 +130,7 @@ export function HeroPlaza() {
   return (
     <section
       className={cn(
-        "relative overflow-x-clip bg-cream pt-8 pb-10 sm:pt-10 sm:pb-12",
+        "relative overflow-x-clip bg-cream pt-[29px] pb-10 sm:pt-[37px] sm:pb-12",
         "lg:flex lg:h-[calc(100svh-7.25rem)] lg:flex-col lg:justify-center lg:overflow-hidden lg:py-5",
       )}
     >
@@ -165,12 +165,12 @@ export function HeroPlaza() {
             </div>
           </div>
 
-          <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-muted sm:mt-4 sm:text-lg sm:leading-8 lg:mx-0 lg:mt-4 lg:max-w-md lg:text-base lg:leading-7">
+          <p className="mx-auto mt-3 max-w-xl text-[15px] leading-6 text-muted sm:mt-4 sm:text-[17px] sm:leading-7 lg:mx-0 lg:mt-4 lg:max-w-md lg:text-[15px] lg:leading-6">
             Experience the art of Turkish barbering. Precision haircuts, skin fades
             and traditional grooming in Kenilworth.
           </p>
 
-          <ul className="mt-7 grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:mt-8 sm:pt-5 lg:mt-8 lg:pt-5">
+          <ul className="mt-[25px] grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:mt-[29px] sm:pt-5 lg:mt-[29px] lg:pt-5">
             {features.map((feature) => (
               <li
                 key={feature.key}
