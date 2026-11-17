@@ -150,8 +150,11 @@ export function HeroPlaza() {
             <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
           </p>
 
-          <h1 className="mx-auto mt-5 max-w-[16ch] text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-6 lg:mx-0 lg:mt-5 lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
-            Modern Turkish barbering
+          <h1 className="mx-auto mt-5 max-w-[12.5ch] text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-6 lg:mx-0 lg:mt-5 lg:max-w-[16ch] lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
+            Modern&nbsp;Turkish
+            <br className="lg:hidden" />
+            {" "}
+            barbering
           </h1>
 
           <div className="relative mt-5 inline-block self-center sm:mt-6 lg:mt-5 lg:self-start">
