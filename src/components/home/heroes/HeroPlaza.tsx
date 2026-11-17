@@ -18,7 +18,7 @@ const features = [
       </>
     ),
     icon: (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 lg:h-4 lg:w-4" fill="none" aria-hidden>
         <circle cx="6.5" cy="6.5" r="2.25" stroke="currentColor" strokeWidth="1.5" />
         <circle cx="6.5" cy="17.5" r="2.25" stroke="currentColor" strokeWidth="1.5" />
         <path
@@ -40,7 +40,7 @@ const features = [
       </>
     ),
     icon: (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 lg:h-4 lg:w-4" fill="none" aria-hidden>
         <path
           d="M4.5 19.5 14 10l2.2 2.2-9.5 9.5H4.5v-2.2Z"
           stroke="currentColor"
@@ -73,7 +73,7 @@ const features = [
       </>
     ),
     icon: (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 lg:h-4 lg:w-4" fill="none" aria-hidden>
         <path
           d="M7.5 9.5c0-2.4 2-4.3 4.5-4.3s4.5 1.9 4.5 4.3"
           stroke="currentColor"
@@ -99,7 +99,7 @@ const features = [
       </>
     ),
     icon: (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 lg:h-4 lg:w-4" fill="none" aria-hidden>
         <path
           d="M12 3.5 13.4 9h5.6l-4.5 3.4 1.7 5.6L12 14.8l-4.2 3.2 1.7-5.6L5 9h5.6L12 3.5Z"
           stroke="currentColor"
@@ -142,8 +142,8 @@ export function HeroPlaza() {
         <HeroWashMark />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 sm:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 xl:gap-14">
-        <div className="flex flex-col text-center lg:text-left">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-5 sm:px-8 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-14">
+        <div className="flex flex-col text-center lg:h-[min(58svh,30rem)] lg:text-left">
           <p className="inline-flex items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-muted sm:gap-4 sm:text-[12px] lg:justify-start">
             <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
             Kenilworth · Since {business.established}
@@ -151,38 +151,62 @@ export function HeroPlaza() {
           </p>
 
           <div className="relative mt-3 w-full self-center sm:mt-4 lg:mt-4 lg:w-fit lg:self-start">
-            <h1 className="mx-auto w-full text-center text-[clamp(2.2rem,7vw,3.7rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.4rem,3.8vw,3.5rem)]">
-              Modern&nbsp;Turkish
+            <h1 className="relative z-10 mx-auto w-full text-center text-[clamp(2.2rem,7vw,3.7rem)] uppercase text-ink lg:mx-0 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.4rem,3.8vw,3.5rem)]">
+              Modern&nbsp;
+              <span className="relative inline-block">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-[42%] left-[68%] z-0 hidden h-44 w-44 -translate-x-1/2 xl:h-52 xl:w-52 lg:block"
+                >
+                  <HeroWashMark />
+                </span>
+                <span className="relative z-10">Turkish</span>
+              </span>
               <br className="lg:hidden" />
               {" "}
               barbering
             </h1>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute top-1/2 left-[calc(100%+140px)] z-0 hidden h-56 w-56 -translate-y-1/2 lg:block"
-            >
-              <HeroWashMark />
-            </div>
           </div>
+
+          <p className="mt-3 flex justify-center sm:mt-4 lg:justify-start">
+            <a
+              href={business.googleReviewsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink sm:text-[12px] sm:tracking-[0.18em] lg:justify-start"
+            >
+              <span className="text-barber tracking-[0.08em]" aria-hidden>
+                ★★★★★
+              </span>
+              <span className="underline decoration-ink/20 underline-offset-[6px] transition-[text-decoration-color] group-hover:decoration-ink/45">
+                {business.rating} ·{" "}
+                {business.googleReviewCount >= 100
+                  ? "120+ five-star Google reviews"
+                  : `${business.googleReviewCount} five-star Google reviews`}
+              </span>
+            </a>
+          </p>
 
           <p className="mx-auto mt-3 max-w-xl text-[15px] leading-6 text-muted sm:mt-4 sm:text-[17px] sm:leading-7 lg:mx-0 lg:mt-4 lg:max-w-md lg:text-[15px] lg:leading-6">
             Experience the art of Turkish barbering. Precision haircuts, skin fades
             and traditional grooming in Kenilworth.
           </p>
 
-          <ul className="mt-[25px] grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:mt-[29px] sm:pt-5 lg:mt-[29px] lg:pt-5">
-            {features.map((feature) => (
-              <li
-                key={feature.key}
-                className="flex flex-col items-center gap-1.5 px-1.5 text-center sm:gap-2.5 sm:px-3 lg:items-start lg:px-2 lg:text-left xl:px-3"
-              >
-                <span className="text-ink">{feature.icon}</span>
-                <span className="text-[9px] font-medium uppercase leading-snug tracking-[0.1em] text-ink sm:text-[11px] sm:tracking-[0.12em] lg:text-[10px] xl:text-[11px]">
-                  {feature.label}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="relative mt-[25px] sm:mt-[29px] lg:mt-auto lg:w-full lg:max-w-[17.5rem] lg:self-start">
+            <ul className="grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-4 sm:pt-5 lg:grid-cols-2 lg:gap-0 lg:divide-x-0 lg:border-t lg:border-ink/10 lg:pt-3 lg:[&>li]:border-ink/10 lg:[&>li:nth-child(odd)]:border-r lg:[&>li:nth-child(-n+2)]:border-b">
+              {features.map((feature) => (
+                <li
+                  key={feature.key}
+                  className="flex flex-col items-center gap-1.5 px-1.5 text-center sm:gap-2.5 sm:px-3 lg:gap-1.5 lg:px-3 lg:py-2.5"
+                >
+                  <span className="text-ink">{feature.icon}</span>
+                  <span className="text-[9px] font-medium uppercase leading-snug tracking-[0.1em] text-ink sm:text-[11px] sm:tracking-[0.12em] lg:text-[9px] lg:tracking-[0.1em] xl:text-[10px]">
+                    {feature.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-5 w-full sm:mt-7 lg:mt-0">
@@ -283,24 +307,6 @@ export function HeroPlaza() {
               </div>
             </div>
           </div>
-          <p className="mt-4 flex justify-center sm:mt-5 lg:justify-start">
-            <a
-              href={business.googleReviewsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink sm:text-[12px] sm:tracking-[0.18em] lg:justify-start"
-            >
-              <span className="text-barber tracking-[0.08em]" aria-hidden>
-                ★★★★★
-              </span>
-              <span className="underline decoration-ink/20 underline-offset-[6px] transition-[text-decoration-color] group-hover:decoration-ink/45">
-                {business.rating} ·{" "}
-                {business.googleReviewCount >= 100
-                  ? "120+ five-star Google reviews"
-                  : `${business.googleReviewCount} five-star Google reviews`}
-              </span>
-            </a>
-          </p>
         </div>
       </div>
 

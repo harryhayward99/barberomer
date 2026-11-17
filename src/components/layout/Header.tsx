@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { business, telHref } from "@/lib/config/business";
-import { cn, liftShadow } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -25,38 +25,22 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 bg-transparent pt-3 sm:border-b sm:border-ink/10 sm:bg-surface sm:pt-0",
-        "sm:shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]",
-      )}
-    >
-      <div className="relative hidden justify-center bg-cream px-4 text-surface sm:block sm:overflow-hidden sm:border-b sm:border-ink/10 sm:px-0">
-        <p className="mx-auto flex min-h-8 w-max max-w-full items-center gap-2 whitespace-nowrap bg-barber py-1.5 pl-8 pr-8 text-[12px] uppercase tracking-[0.14em] text-surface sm:ml-auto sm:mr-0">
+    <header className="sticky top-0 z-40 bg-ink text-surface">
+      <div>
+        <p className="mx-auto hidden max-w-7xl items-center justify-between gap-4 px-8 py-2 text-[11px] uppercase tracking-[0.14em] text-surface/70 sm:flex">
           <span>
             {business.address.line1}, {business.address.city}
           </span>
-          <span className="hidden text-surface/55 sm:inline" aria-hidden>
-            ·
-          </span>
-          <a
-            href={telHref()}
-            className="hidden tabular-nums tracking-normal hover:underline sm:inline"
-          >
+          <a href={telHref()} className="tabular-nums tracking-normal hover:text-surface">
             {business.phoneDisplay}
           </a>
         </p>
       </div>
+      <div className="hidden h-px bg-surface/20 sm:block" aria-hidden />
 
-      <div
-        className={cn(
-          "mx-3 mb-0 flex items-center justify-between gap-2.5 rounded border border-ink/10 bg-surface px-2.5 py-2.5",
-          liftShadow,
-          "sm:mx-auto sm:h-[4.5rem] sm:max-w-7xl sm:rounded-none sm:border-0 sm:bg-surface sm:px-8 sm:py-0 sm:shadow-none",
-        )}
-      >
-        <Link href="/" className="flex shrink-0 items-center gap-2.5">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-ink/10 bg-surface sm:h-10 sm:w-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:h-[4.75rem] sm:px-8 sm:py-0">
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-surface/20 bg-surface/5">
             <Image
               src="/images/logo.png"
               alt="Barber Omer Kenilworth"
@@ -67,10 +51,10 @@ export function Header() {
             />
           </span>
           <span className="flex flex-col gap-0.5">
-            <span className="font-heading text-[16px] leading-none tracking-[0.01em] sm:text-[17px]">
+            <span className="font-heading text-[16px] leading-none tracking-[0.01em] text-surface sm:text-[18px]">
               Barber Omer
             </span>
-            <span className="text-[10px] font-medium uppercase leading-none tracking-[0.18em] text-muted sm:text-[11px]">
+            <span className="text-[10px] font-medium uppercase leading-none tracking-[0.18em] text-surface/55 sm:text-[11px]">
               Kenilworth
             </span>
           </span>
@@ -82,8 +66,8 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-[12px] font-medium uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink",
-                pathname === item.href && "text-ink",
+                "text-[12px] font-medium uppercase tracking-[0.16em] text-surface/65 transition-colors hover:text-surface",
+                pathname === item.href && "text-surface",
               )}
             >
               {item.label}
@@ -103,8 +87,8 @@ export function Header() {
           <button
             type="button"
             className={cn(
-              "inline-flex h-9 w-9 items-center justify-center rounded-sm border border-ink/15 bg-surface text-ink transition-colors duration-300 sm:h-10 sm:w-10 xl:hidden",
-              open && "border-ink bg-ink text-surface",
+              "inline-flex h-9 w-9 items-center justify-center rounded-sm bg-transparent text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors duration-300 sm:h-10 sm:w-10 xl:hidden",
+              open && "bg-surface text-ink shadow-[inset_0_0_0_1px_rgba(248,243,234,0.55)]",
             )}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -160,12 +144,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div
-          className={cn(
-            "mx-3 mb-3 border border-ink/10 bg-surface px-5 py-6 xl:hidden sm:mx-0 sm:mb-0 sm:border-x-0 sm:border-b-0 sm:shadow-none",
-            liftShadow,
-          )}
-        >
+        <div className="mx-3 mb-3 border border-surface/15 bg-ink px-5 py-6 xl:hidden sm:mx-0 sm:mb-0 sm:border-x-0 sm:border-b-0">
           <nav className="flex flex-col gap-4">
             {nav.map((item) => (
               <Link
@@ -173,7 +152,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "font-heading text-2xl uppercase tracking-[-0.03em]",
-                  pathname === item.href ? "text-ink" : "text-ink/70",
+                  pathname === item.href ? "text-surface" : "text-surface/70",
                 )}
               >
                 {item.label}
@@ -187,7 +166,7 @@ export function Header() {
             >
               Book
             </a>
-            <p className="pt-2 text-sm text-muted">
+            <p className="pt-2 text-sm text-surface/55">
               {business.address.line1}, {business.address.city}
             </p>
           </nav>

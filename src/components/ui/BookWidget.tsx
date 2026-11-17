@@ -1,20 +1,14 @@
 import { business, telHref } from "@/lib/config/business";
-import { cn, liftShadow } from "@/lib/utils";
 
 export function BookWidget() {
   return (
     <>
-      {/* Mobile: sticky Book + Call bar */}
+      {/* Mobile: sticky Book + Call bar — matches ink header */}
       <div
         className="pointer-events-none fixed inset-x-0 bottom-0 z-30 sm:hidden"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div
-          className={cn(
-            "pointer-events-auto rounded-t border-t border-ink/10 bg-surface/95 px-3 py-2.5 backdrop-blur-sm",
-            liftShadow,
-          )}
-        >
+        <div className="pointer-events-auto rounded-t border-t border-surface/15 bg-ink px-3 py-2.5">
           <div className="mx-auto grid max-w-lg grid-cols-2 gap-2.5">
             <a
               href={business.bookingUrl}
@@ -27,7 +21,7 @@ export function BookWidget() {
             </a>
             <a
               href={telHref()}
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm border border-ink bg-surface px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:bg-ink hover:text-surface"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm bg-transparent px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors hover:bg-surface/10"
             >
               <PhoneIcon />
               Call
@@ -45,7 +39,7 @@ export function BookWidget() {
             target="_blank"
             rel="noreferrer"
             aria-label="Book an appointment"
-            className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded border border-barber bg-surface text-barber shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]"
+            className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded border border-ink bg-ink text-surface shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]"
           >
             <CalendarIcon className="h-6 w-6" />
           </a>
