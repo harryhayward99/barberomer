@@ -247,17 +247,37 @@ export function HeroPlaza() {
                     type="button"
                     aria-label="Previous image"
                     onClick={() => go(-1)}
-                    className="inline-flex h-10 items-center justify-center bg-surface/10 text-lg leading-none text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                    className="inline-flex h-10 items-center justify-center bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
                   >
-                    ‹
+                    <svg
+                      viewBox="0 0 16 16"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="square"
+                      aria-hidden
+                    >
+                      <path d="M10 3.5 5.5 8 10 12.5" />
+                    </svg>
                   </button>
                   <button
                     type="button"
                     aria-label="Next image"
                     onClick={() => go(1)}
-                    className="inline-flex h-10 items-center justify-center border-l border-surface/15 bg-surface/10 text-lg leading-none text-surface transition-colors hover:bg-surface/20 sm:h-11"
+                    className="inline-flex h-10 items-center justify-center border-l border-surface/15 bg-surface/10 text-surface transition-colors hover:bg-surface/20 sm:h-11"
                   >
-                    ›
+                    <svg
+                      viewBox="0 0 16 16"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="square"
+                      aria-hidden
+                    >
+                      <path d="M6 3.5 10.5 8 6 12.5" />
+                    </svg>
                   </button>
                 </div>
               </div>
