@@ -283,6 +283,18 @@ export function HeroPlaza() {
               </div>
             </div>
           </div>
+          <p className="mt-3 text-center text-[13px] leading-5 text-muted sm:mt-4 sm:text-[14px] sm:leading-6 lg:text-left">
+            <a
+              href={business.googleReviewsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-ink/25 underline-offset-[5px] transition-colors hover:text-ink hover:decoration-ink/50"
+            >
+              {business.googleReviewCount >= 100
+                ? "120+ five-star Google reviews"
+                : `${business.googleReviewCount} five-star Google reviews`}
+            </a>
+          </p>
         </div>
       </div>
 

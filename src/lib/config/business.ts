@@ -28,6 +28,8 @@ export const business = {
     "Wi-Fi available",
   ],
   rating: 4.9,
+  /** Public Google listing total; copy uses a soft floor for five-star wording. */
+  googleReviewCount: 124,
   timezone: "Europe/London",
 } as const;
 
