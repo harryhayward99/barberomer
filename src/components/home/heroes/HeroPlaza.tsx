@@ -150,14 +150,14 @@ export function HeroPlaza() {
             <span className="h-px w-6 shrink-0 bg-ink/10 sm:w-8" aria-hidden />
           </p>
 
-          <h1 className="mx-auto mt-5 w-full text-center text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-6 lg:mx-0 lg:mt-5 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
+          <h1 className="mx-auto mt-3 w-full text-center text-[clamp(2.45rem,7.8vw,4.1rem)] uppercase text-ink sm:mt-4 lg:mx-0 lg:mt-4 lg:max-w-[16ch] lg:text-left lg:text-[clamp(2.6rem,4.2vw,3.85rem)]">
             Modern&nbsp;Turkish
             <br className="lg:hidden" />
             {" "}
             barbering
           </h1>
 
-          <div className="relative mt-5 inline-block self-center sm:mt-6 lg:mt-5 lg:self-start">
+          <div className="relative mt-3 inline-block self-center sm:mt-4 lg:mt-4 lg:self-start">
             <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-barber sm:text-[13px] sm:tracking-[0.2em]">
               Expert cuts. Exceptional service.
             </p>
@@ -170,7 +170,7 @@ export function HeroPlaza() {
             </div>
           </div>
 
-          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8 lg:mx-0 lg:mt-5 lg:max-w-md lg:text-base lg:leading-7">
+          <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-muted sm:mt-4 sm:text-lg sm:leading-8 lg:mx-0 lg:mt-4 lg:max-w-md lg:text-base lg:leading-7">
             Experience the art of Turkish barbering. Precision haircuts, skin fades
             and traditional grooming in Kenilworth.
           </p>
