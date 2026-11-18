@@ -51,7 +51,7 @@ export function ServicesList({
           return (
             <div
               key={group.id}
-              className="surface-fade border border-ink/10 bg-surface"
+              className="surface-fade overflow-hidden rounded border border-ink/10 bg-surface"
             >
               <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
                 <h3 className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
@@ -89,7 +89,7 @@ export function ServicesList({
                       href={business.bookingUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-9 shrink-0 items-center justify-center bg-surface px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5"
+                      className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-full bg-surface px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-ink transition-transform duration-200 hover:-translate-y-0.5"
                     >
                       Book
                     </a>
@@ -123,7 +123,7 @@ export function ServicesList({
                         href={business.bookingUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex min-h-9 shrink-0 items-center justify-center bg-barber px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+                        className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-full bg-barber px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
                       >
                         Book
                       </a>

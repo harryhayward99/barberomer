@@ -14,14 +14,14 @@ export function BookWidget() {
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm bg-barber px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface transition-colors hover:bg-barber-deep"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-barber px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface transition-colors hover:bg-barber-deep"
             >
               <CalendarIcon />
               Book
             </a>
             <a
               href={telHref()}
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-sm bg-transparent px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors hover:bg-surface/10"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-transparent px-3 text-[11px] font-medium uppercase tracking-[0.16em] text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors hover:bg-surface/10"
             >
               <PhoneIcon />
               Call
@@ -39,7 +39,7 @@ export function BookWidget() {
             target="_blank"
             rel="noreferrer"
             aria-label="Book an appointment"
-            className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded border border-ink bg-ink text-surface shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)]"
+            className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full border border-barber bg-barber text-surface shadow-[0_4px_10px_rgba(28,24,21,0.14),0_10px_22px_rgba(28,24,21,0.2)] transition-colors hover:bg-barber-deep hover:border-barber-deep"
           >
             <CalendarIcon className="h-6 w-6" />
           </a>

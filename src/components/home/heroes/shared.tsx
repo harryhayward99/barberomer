@@ -32,7 +32,7 @@ export function HeroBookButton({
       href={business.bookingUrl}
       target="_blank"
       rel="noreferrer"
-      className={className || cn(btnPrimaryClass, liftShadow)}
+      className={cn(btnPrimaryClass, liftShadow, className)}
     >
       {label}
     </a>

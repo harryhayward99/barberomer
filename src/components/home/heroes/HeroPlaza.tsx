@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { heroSlides } from "@/components/home/heroes/shared";
+import { HeroBookButton, heroSlides } from "@/components/home/heroes/shared";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
-import { business } from "@/lib/config/business";
-import { cn } from "@/lib/utils";
+import { business, telHref } from "@/lib/config/business";
+import { btnSecondaryClass, cn } from "@/lib/utils";
 
 const features = [
   {
@@ -192,12 +192,21 @@ export function HeroPlaza() {
             and traditional grooming in Kenilworth.
           </p>
 
-          <div className="relative mt-4 sm:mt-5 lg:mt-auto lg:w-full lg:max-w-[17.5rem] lg:self-start">
-            <ul className="grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-3 sm:pt-3.5 lg:grid-cols-2 lg:gap-0 lg:divide-x-0 lg:border-t lg:border-ink/10 lg:pt-3 lg:[&>li]:border-ink/10 lg:[&>li:nth-child(odd)]:border-r lg:[&>li:nth-child(-n+2)]:border-b">
+          <div className="mt-5 hidden flex-wrap items-center gap-3 lg:flex">
+            <HeroBookButton label="Book a seat" />
+            <a href={telHref()} className={btnSecondaryClass}>
+              <span className="tabular-nums tracking-normal normal-case">
+                {business.phoneDisplay}
+              </span>
+            </a>
+          </div>
+
+          <div className="relative mt-4 sm:mt-5 lg:mt-auto lg:w-full lg:max-w-md lg:self-start">
+            <ul className="grid grid-cols-4 gap-0 divide-x divide-ink/10 border-t border-ink/10 pt-3 sm:pt-3.5 lg:border-t-0 lg:pt-0">
               {features.map((feature) => (
                 <li
                   key={feature.key}
-                  className="flex flex-col items-center gap-1 px-1.5 text-center sm:gap-1.5 sm:px-3 lg:gap-1.5 lg:px-3 lg:py-2.5"
+                  className="flex flex-col items-center gap-1 px-1.5 text-center sm:gap-1.5 sm:px-3 lg:gap-1.5 lg:px-2.5 lg:py-1 xl:px-3"
                 >
                   <span className="text-ink">{feature.icon}</span>
                   <span className="text-[9px] font-medium uppercase leading-snug tracking-[0.1em] text-ink sm:text-[11px] sm:tracking-[0.12em] lg:text-[9px] lg:tracking-[0.1em] xl:text-[10px]">

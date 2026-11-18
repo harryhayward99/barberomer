@@ -40,7 +40,7 @@ export function Footer() {
             href={business.bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 flex w-fit min-h-12 items-center justify-center bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
+            className="mt-5 flex w-fit min-h-12 items-center justify-center rounded-full bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep"
           >
             Book Online Now
           </a>

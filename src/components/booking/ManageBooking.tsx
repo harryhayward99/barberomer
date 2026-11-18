@@ -83,7 +83,7 @@ export function ManageBooking({ token }: { token: string }) {
           <button
             type="button"
             onClick={() => setMode("reschedule")}
-            className="inline-flex min-h-12 items-center justify-center rounded-none bg-barber px-6 text-surface"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-barber px-6 text-surface"
           >
             Reschedule appointment
           </button>
@@ -136,7 +136,7 @@ export function ManageBooking({ token }: { token: string }) {
             type="button"
             disabled={!date || !time}
             onClick={reschedule}
-            className="mt-8 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
+            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-surface disabled:opacity-40"
           >
             Save new time
           </button>

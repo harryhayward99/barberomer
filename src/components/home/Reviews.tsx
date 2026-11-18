@@ -77,7 +77,7 @@ export function Reviews({ pageStart = false }: { pageStart?: boolean }) {
         {reviews.map((review) => (
           <figure
             key={review.name}
-            className="surface-fade w-[300px] shrink-0 border border-ink/10 bg-surface p-5 sm:w-[360px] sm:p-6"
+            className="surface-fade w-[300px] shrink-0 overflow-hidden rounded border border-ink/10 bg-surface p-5 sm:w-[360px] sm:p-6"
           >
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-ink/10 bg-ink text-[11px] font-medium uppercase tracking-[0.08em] text-surface">

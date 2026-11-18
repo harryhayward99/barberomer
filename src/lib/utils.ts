@@ -27,10 +27,10 @@ export const liftShadow =
 export const btnSurfaceShadow = liftShadow;
 
 export const btnPrimaryClass =
-  "inline-flex min-h-12 items-center justify-center bg-barber px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep";
+  "inline-flex min-h-12 items-center justify-center rounded-full bg-barber px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep";
 
 export const btnSecondaryClass =
-  `inline-flex min-h-12 items-center justify-center border border-ink bg-surface px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-ink transition-transform duration-200 hover:-translate-y-0.5 ${liftShadow}`;
+  `inline-flex min-h-12 items-center justify-center rounded-full border border-ink bg-surface px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-ink transition-transform duration-200 hover:-translate-y-0.5 ${liftShadow}`;
 
 export const btnInkClass =
-  "inline-flex min-h-12 items-center justify-center bg-ink px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-surface transition-transform duration-200 hover:-translate-y-0.5";
+  "inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-5 text-[12px] font-medium uppercase tracking-[0.16em] text-surface transition-transform duration-200 hover:-translate-y-0.5";

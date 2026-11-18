@@ -321,7 +321,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
             type="button"
             disabled={!date || !time}
             onClick={() => setStep(3)}
-            className="mt-10 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
+            className="mt-10 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-surface disabled:opacity-40"
           >
             Continue
           </button>
@@ -389,7 +389,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
             </label>
             <button
               type="submit"
-              className="inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface"
+              className="inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-surface"
             >
               Review deposit
             </button>
@@ -442,7 +442,7 @@ export function BookingWizard({ initialServiceId }: WizardProps) {
             type="button"
             disabled={loading}
             onClick={pay}
-            className="mt-8 inline-flex min-h-12 items-center rounded-none bg-barber px-6 text-surface disabled:opacity-40"
+            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-barber px-6 text-surface disabled:opacity-40"
           >
             {loading ? "Taking you to payment…" : "Pay deposit"}
           </button>

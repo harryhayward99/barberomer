@@ -10,7 +10,7 @@ import {
 export function Location() {
   return (
     <section id="contact" className={cn("mx-auto max-w-7xl px-5 sm:px-8", sectionPadY)}>
-      <div className="surface-fade relative z-10 grid gap-8 border border-ink/10 bg-surface lg:grid-cols-2 lg:gap-0">
+      <div className="surface-fade relative z-10 grid gap-8 overflow-hidden rounded border border-ink/10 bg-surface lg:grid-cols-2 lg:gap-0">
         <div className="flex flex-col justify-between gap-10 px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
           <div>
             <p className={eyebrowClass}>Find us</p>

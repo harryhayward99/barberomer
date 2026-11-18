@@ -30,7 +30,7 @@ export function About({ pageStart = false }: { pageStart?: boolean }) {
             pageStart && "md:justify-center",
           )}
         >
-          <div className="surface-fade relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden border border-ink/10 bg-ink/5 sm:h-24 sm:w-24">
+          <div className="surface-fade relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded border border-ink/10 bg-ink/5 sm:h-24 sm:w-24">
             <Image
               src={aboutImage.src}
               alt={aboutImage.alt}

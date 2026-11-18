@@ -80,14 +80,14 @@ export function Header() {
             href={business.bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="hidden min-[370px]:inline-flex h-9 items-center justify-center rounded-sm bg-barber px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep sm:h-10 sm:px-5 sm:text-[12px]"
+            className="hidden min-[370px]:inline-flex h-9 items-center justify-center rounded-full bg-barber px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-surface transition-transform duration-200 hover:-translate-y-0.5 hover:bg-barber-deep sm:h-10 sm:px-5 sm:text-[12px]"
           >
             Book
           </a>
           <button
             type="button"
             className={cn(
-              "inline-flex h-9 w-9 items-center justify-center rounded-sm bg-transparent text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors duration-300 sm:h-10 sm:w-10 xl:hidden",
+              "inline-flex h-9 w-9 items-center justify-center rounded-full bg-transparent text-surface shadow-[inset_0_0_0_1px_rgba(248,243,234,0.35)] transition-colors duration-300 sm:h-10 sm:w-10 xl:hidden",
               open && "bg-surface text-ink shadow-[inset_0_0_0_1px_rgba(248,243,234,0.55)]",
             )}
             aria-expanded={open}
@@ -162,7 +162,7 @@ export function Header() {
               href={business.bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-2 inline-flex min-h-12 w-fit items-center justify-center bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface"
+              className="mt-2 inline-flex min-h-12 w-fit items-center justify-center rounded-full bg-barber px-5 text-[13px] font-medium uppercase tracking-[0.14em] text-surface"
             >
               Book
             </a>
